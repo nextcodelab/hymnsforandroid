@@ -31,4 +31,11 @@
         android:icon="@drawable/ic_settings_white_48dp"
         android:title="Hymnal.Net"
         />
+    <item
+        android:id="@+id/refesh_action_menu_ic"
+        android:menuCategory="secondary"
+        yourapp:showAsAction="never"
+        android:icon="@drawable/ic_settings_white_48dp"
+        android:title="Refresh"
+        />
 </menu>

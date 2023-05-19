@@ -40,6 +40,7 @@ public class NetworkCache {
                 if (isNetworkAvailable(context)) {
                     JsonFetch jsonFetch = new JsonFetch();
                     jsonFetch.execute();
+                    refreshTunes = false;
                 } else {
                     jsonToList(json);
                 }

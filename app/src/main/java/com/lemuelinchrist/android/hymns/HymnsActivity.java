@@ -198,6 +198,10 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
                     e.printStackTrace();
                 }
                 break;
+            case R.id.refesh_action_menu_ic:
+                NetworkCache.refreshTunes = true;
+                NetworkCache.LoadHymnTunes(this);
+                break;
             default:
                 ret = false;
                 Log.w(HymnsActivity.class.getSimpleName(), "Warning!! No Item was selected!!");
