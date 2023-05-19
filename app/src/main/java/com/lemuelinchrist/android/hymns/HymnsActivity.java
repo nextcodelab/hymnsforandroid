@@ -1,22 +1,33 @@
 package com.lemuelinchrist.android.hymns;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.*;
 import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ComponentActivity;
 import androidx.core.view.GravityCompat;
+import androidx.core.view.ViewCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.preference.PreferenceManager;
 import androidx.viewpager.widget.ViewPager;
+
 import com.lemuelinchrist.android.hymns.content.OnLyricVisibleListener;
 import com.lemuelinchrist.android.hymns.search.SearchActivity;
 import com.lemuelinchrist.android.hymns.settings.SettingsActivity;
@@ -36,6 +47,8 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
     private ActionBarDrawerToggle mDrawerToggle;
 
     private ActionBar actionBar;
+    public ViewPager viewPager;
+    public String currentHymnId;
     private HymnBookCollection hymnBookCollection;
     private Theme theme = Theme.LIGHT;
     private SharedPreferences sharedPreferences;
@@ -46,6 +59,7 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         NetworkCache.LoadHymnTunes(this);
         Log.d(this.getClass().getName(), "start app");
 
@@ -59,7 +73,9 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
 
         // Instantiate a ViewPager and a PagerAdapter.
-        hymnBookCollection = new HymnBookCollection(this,(ViewPager) findViewById(R.id.hymn_fragment_viewpager),theme);
+        this.viewPager = (ViewPager) findViewById(R.id.hymn_fragment_viewpager);
+
+        hymnBookCollection = new HymnBookCollection(this, this.viewPager, theme);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitleTextColor(Color.WHITE);
@@ -95,7 +111,11 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         setDisplayConfig();
-        hymnSwitcher=this;
+        hymnSwitcher = this;
+    }
+
+    public void UpdateSelection() {
+        this.viewPager.getCurrentItem();
     }
 
     private void refreshHymnDrawer() {
@@ -150,11 +170,55 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
                 Intent settingsIntent = new Intent(getBaseContext(), SettingsActivity.class);
                 startActivity(settingsIntent);
                 break;
+            case R.id.action_submit_ty:
+                showSubmitDialog();
+                break;
             default:
                 ret = false;
                 Log.w(HymnsActivity.class.getSimpleName(), "Warning!! No Item was selected!!");
         }
         return ret;
+    }
+
+    void showSubmitDialog() {
+        String yt = NetworkCache.Preferences.getString(currentHymnId, "");
+
+        FrameLayout container = new FrameLayout(this);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.leftMargin = 35;
+        params.rightMargin = 35;
+
+        final EditText taskEditText = new EditText(this);
+        taskEditText.setText(yt);
+        taskEditText.setLayoutParams(params);
+        container.addView(taskEditText);
+
+        int color = Color.argb(40, 255, 100, 60);
+        ColorStateList colorStateList = ColorStateList.valueOf(color);
+        ViewCompat.setBackgroundTintList(taskEditText, colorStateList);
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setTitle("YOUTUBE EMBED")
+                .setMessage("Enter youtube link")
+                .setView(container)
+                .setPositiveButton("Save", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String task = String.valueOf(taskEditText.getText());
+
+                        if (task.contains("https://youtu.be/") || task.contains("https://www.youtube.com/watch?v=")) {
+                            SharedPreferences.Editor editor = NetworkCache.Preferences.edit();
+                            editor.putString(currentHymnId, task);
+                            editor.apply();
+                            Toast.makeText(taskEditText.getContext(), R.string.saved, Toast.LENGTH_SHORT).show();
+                            onLyricVisible(currentHymnId);
+                        } else {
+                            Toast.makeText(taskEditText.getContext(), R.string.invalidUrl, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .setNegativeButton("Cancel", null)
+                .create();
+        dialog.show();
     }
 
     private void changeThemeColor() {
@@ -201,12 +265,12 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
     @Override
     public void onLyricVisible(String hymnId) {
 
-        if (hymnId==null) hymnId=HymnGroup.DEFAULT_HYMN_NUMBER;
+        if (hymnId == null) hymnId = HymnGroup.DEFAULT_HYMN_NUMBER;
 
         try {
             selectedHymnGroup = HymnGroup.getHymnGroupFromID(hymnId);
             Log.i(getClass().getSimpleName(), "Page changed. setting title to: " + hymnId);
-
+            currentHymnId = hymnId;
             actionBar.setTitle(hymnId);
             changeThemeColor();
 
@@ -218,24 +282,24 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        preferenceChanged=true;
+        preferenceChanged = true;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if(preferenceChanged) {
+        if (preferenceChanged) {
             setDisplayConfig();
             changeThemeColor();
             refreshHymnDrawer();
             hymnBookCollection.refresh();
-            preferenceChanged=false;
+            preferenceChanged = false;
         }
-        hymnSwitcher=this;
+        hymnSwitcher = this;
     }
 
     private void setDisplayConfig() {
-        if(sharedPreferences.getBoolean("keepDisplayOn",false)) {
+        if (sharedPreferences.getBoolean("keepDisplayOn", false)) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         } else {
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);

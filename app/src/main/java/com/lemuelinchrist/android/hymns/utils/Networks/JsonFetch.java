@@ -2,6 +2,7 @@ package com.lemuelinchrist.android.hymns.utils.Networks;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
@@ -32,13 +33,13 @@ import java.util.Scanner;
 public class JsonFetch extends AsyncTask<Hymn, Void, HymnYT> {
     public WebView webView;
     public View cardView;
-
     @Override
     protected HymnYT doInBackground(Hymn... params) {
         Hymn hymn = null;
         if (params != null && params.length > 0) {
             hymn = params[0];
         }
+
         if (NetworkCache.hymnTunes != null) {
             if (hymn != null) {
                 return NetworkCache.GetHymnTune(hymn);
@@ -63,9 +64,14 @@ public class JsonFetch extends AsyncTask<Hymn, Void, HymnYT> {
             Scanner s = new Scanner(inputStream).useDelimiter("\\A");
             String result = s.hasNext() ? s.next() : "";
             final ObjectMapper objectMapper = new ObjectMapper();
-            NetworkCache.hymnTunes = objectMapper.readValue(result, HymnYT[].class);
-            if (hymn != null) {
-                return NetworkCache.GetHymnTune(hymn);
+            if (result != null && result != "") {
+                NetworkCache.hymnTunes = objectMapper.readValue(result, HymnYT[].class);
+                SharedPreferences.Editor editor = NetworkCache.Preferences.edit();
+                editor.putString(NetworkCache.HYMN_JSON_FILE, result);
+                editor.apply();
+                if (hymn != null) {
+                    return NetworkCache.GetHymnTune(hymn);
+                }
             }
             return null;
         } catch (IOException e) {
