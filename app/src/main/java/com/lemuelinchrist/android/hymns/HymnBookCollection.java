@@ -3,10 +3,12 @@ package com.lemuelinchrist.android.hymns;
 import android.os.Handler;
 import android.util.Log;
 import android.view.ViewGroup;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
 import com.lemuelinchrist.android.hymns.content.ContentArea;
 import com.lemuelinchrist.android.hymns.content.OnLyricVisibleListener;
 import com.lemuelinchrist.android.hymns.content.PlayButton;
@@ -35,13 +37,13 @@ public class HymnBookCollection implements OnLyricVisibleListener {
     private HymnBookGroup currentHymnBookGroup;
     private HymnStack hymnStack = new HymnStack(HymnGroup.DEFAULT_HYMN_NUMBER);
 
-    private Theme theme=Theme.LIGHT;
+    private Theme theme = Theme.LIGHT;
 
     public HymnBookCollection(final HymnsActivity context, final ViewPager lyricPager, Theme theme) {
         this.context = context;
         dao = new HymnsDao(context);
         this.lyricPager = lyricPager;
-        this.theme=theme;
+        this.theme = theme;
 
         switchHymnBook(HymnGroup.getDefaultHymnGroup());
     }
@@ -53,19 +55,19 @@ public class HymnBookCollection implements OnLyricVisibleListener {
     public void refresh() {
         String currentHymnId;
         // If current hymn id is not present, get it from history
-        if(getCurrentHymnId()==null) {
-            LogBook historyLogBook = new LogBook(context,HISTORY_LOGBOOK_FILE);
+        if (getCurrentHymnId() == null) {
+            LogBook historyLogBook = new LogBook(context, HISTORY_LOGBOOK_FILE);
             HymnRecord[] records = historyLogBook.getOrderedRecordList();
-            currentHymnId = records.length>0 ? records[0].getHymnId() : HymnGroup.DEFAULT_HYMN_NUMBER;
+            currentHymnId = records.length > 0 ? records[0].getHymnId() : HymnGroup.DEFAULT_HYMN_NUMBER;
         } else {
-            currentHymnId =  getCurrentHymnId();
+            currentHymnId = getCurrentHymnId();
         }
         hymnBooks = new HashMap<>();
         try {
             switchHymnBook(HymnGroup.getHymnGroupFromID(currentHymnId));
             switchToHymn(currentHymnId);
         } catch (NoSuchHymnGroupException e) {
-          Log.e(this.getClass().getName(),e.getMessage());
+            Log.e(this.getClass().getName(), e.getMessage());
         }
     }
 
@@ -92,7 +94,7 @@ public class HymnBookCollection implements OnLyricVisibleListener {
     }
 
     public String getCurrentHymnId() {
-        if(getCurrentHymnLyric()==null) {
+        if (getCurrentHymnLyric() == null) {
             return null;
         }
         return getCurrentHymnLyric().getHymnId();
@@ -107,10 +109,14 @@ public class HymnBookCollection implements OnLyricVisibleListener {
         switchToHymn(hymnNo);
     }
 
+    public void switchToHymnAndRememberChoiceRefresh(String hymnNo) {
+        hymnStack.push(hymnNo);  // log the hymn first before logging the translated one.
+        switchToHymn(hymnNo);
+    }
+
     public void switchToHymn(String hymnId) {
 
         if (hymnId.equals(getCurrentHymnId())) return;
-
         Log.i(getClass().getName(), "switching to hymn " + hymnId);
 
         HymnGroup selectedHymnGroup = null;
@@ -123,7 +129,7 @@ public class HymnBookCollection implements OnLyricVisibleListener {
         final String selectedHymnNumber = HymnGroup.getHymnNoFromID(hymnId);
 
         // in case of a garbage collection cache wipe. note: this is not tested. probably useless.
-        if(getCurrentHymnLyric()==null) {
+        if (getCurrentHymnLyric() == null) {
             Log.e(this.getClass().getName(), "current hymn lyric missing! generating new hymn book");
             hymnBooks = new HashMap<>();
             switchHymnBook(selectedHymnGroup);
@@ -175,7 +181,7 @@ public class HymnBookCollection implements OnLyricVisibleListener {
         PlayButton.stopCurrentlyPlayingButton();
 
         // sometimes current hymn lyric is null becuase of a random garbage cleanup.
-        if(getCurrentHymnLyric()==null) {
+        if (getCurrentHymnLyric() == null) {
             Log.e(getClass().getName(), "Error trying to get current hymn lyric. is null.");
         } else {
             logToHistory();

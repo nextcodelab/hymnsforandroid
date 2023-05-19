@@ -210,7 +210,8 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
                             editor.putString(currentHymnId, task);
                             editor.apply();
                             Toast.makeText(taskEditText.getContext(), R.string.saved, Toast.LENGTH_SHORT).show();
-                            onLyricVisible(currentHymnId);
+                            finish();
+                            startActivity(getIntent());
                         } else {
                             Toast.makeText(taskEditText.getContext(), R.string.invalidUrl, Toast.LENGTH_SHORT).show();
                         }
