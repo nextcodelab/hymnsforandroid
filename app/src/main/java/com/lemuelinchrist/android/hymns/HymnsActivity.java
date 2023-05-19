@@ -1,11 +1,13 @@
 package com.lemuelinchrist.android.hymns;
 
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.*;
@@ -172,6 +174,29 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
                 break;
             case R.id.action_submit_ty:
                 showSubmitDialog();
+                break;
+            case R.id.hymnal_net:
+                try {
+
+                    String number = currentHymnId.replaceAll("[^0-9]", "");
+                    String letter = "h";
+                    if (currentHymnId.startsWith("E")) {
+                        letter = "h";
+                    } else {
+                        String letters =  currentHymnId.replaceAll("[^a-zA-Z].*", "");
+                        if (letters.length() > 1) {
+                            letter = letters;
+                        }
+                    }
+                    letter = letter.toLowerCase();
+                    String url = "https://www.hymnal.net/en/hymn/" + letter + "/" + number;
+                    Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    startActivity(myIntent);
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(this, "No application can handle this request."
+                            + " Please install a webbrowser",  Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
                 break;
             default:
                 ret = false;

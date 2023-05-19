@@ -24,4 +24,11 @@
         android:icon="@drawable/ic_settings_white_48dp"
         android:title="Submit Youtube"
         />
+    <item
+        android:id="@+id/hymnal_net"
+        android:menuCategory="secondary"
+        yourapp:showAsAction="never"
+        android:icon="@drawable/ic_settings_white_48dp"
+        android:title="Hymnal.Net"
+        />
 </menu>
