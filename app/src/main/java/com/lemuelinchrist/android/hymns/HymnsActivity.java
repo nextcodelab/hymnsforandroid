@@ -4,6 +4,7 @@ import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -25,6 +26,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ComponentActivity;
+import androidx.core.content.FileProvider;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -38,6 +40,13 @@ import com.lemuelinchrist.android.hymns.style.Theme;
 import com.lemuelinchrist.android.hymns.utils.Networks.NetworkCache;
 import com.lemuelinchrist.android.hymns.utils.Networks.NetworkHelper;
 import com.lemuelinchrist.android.hymns.utils.Networks.Servers.SheetItemPusher;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 
 /**
@@ -206,6 +215,12 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
                 NetworkCache.refreshTunes = true;
                 NetworkCache.LoadHymnTunes(this);
                 break;
+            case R.id.share_apk:
+                shareApplication();
+                break;
+            case R.id.share_apk_link:
+                ShareAPKLink();
+                break;
             default:
                 ret = false;
                 Log.w(HymnsActivity.class.getSimpleName(), "Warning!! No Item was selected!!");
@@ -218,7 +233,7 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
             return;
         }
         String saveLabel = "Save";
-        if (NetworkCache.hasInternet){
+        if (NetworkCache.hasInternet) {
             saveLabel = "Submit";
         }
         String yt = NetworkCache.Preferences.getString(currentHymnId, "");
@@ -269,6 +284,26 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
                 .setNegativeButton("Cancel", null)
                 .create();
         dialog.show();
+    }
+
+    private void shareApplication() {
+        ApplicationInfo api = getApplicationContext().getApplicationInfo();
+        String filePath = api.sourceDir;
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("application/vnd.android.package-archive");
+
+        intent.putExtra(Intent.EXTRA_STREAM,
+                Uri.parse(filePath));
+        startActivity(Intent.createChooser(intent, "Share Using"));
+    }
+    private void ShareAPKLink(){
+        String link = "https://github.com/nextcodelab/hymnsforandroid/raw/master/app/release/app-release.apk";
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, link);
+        sendIntent.setType("text/plain");
+        startActivity(sendIntent);
     }
 
     private void changeThemeColor() {

@@ -48,4 +48,6 @@
     <string name="saved">Saved</string>
     <string name="invalidUrl">Invalid youtube link</string>
     <string name="includeYoutubeEmbed">Include youtube embed video</string>
+    <string name="shareAPK">Share APK</string>
+    <string name="shareAPKLink">Share APK Link</string>
 </resources>
