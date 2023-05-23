@@ -9,6 +9,7 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.*;
 import android.widget.AdapterView;
@@ -35,6 +36,8 @@ import com.lemuelinchrist.android.hymns.search.SearchActivity;
 import com.lemuelinchrist.android.hymns.settings.SettingsActivity;
 import com.lemuelinchrist.android.hymns.style.Theme;
 import com.lemuelinchrist.android.hymns.utils.Networks.NetworkCache;
+import com.lemuelinchrist.android.hymns.utils.Networks.NetworkHelper;
+import com.lemuelinchrist.android.hymns.utils.Networks.Servers.SheetItemPusher;
 
 
 /**
@@ -61,7 +64,8 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         NetworkCache.LoadHymnTunes(this);
         Log.d(this.getClass().getName(), "start app");
 
@@ -183,7 +187,7 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
                     if (currentHymnId.startsWith("E")) {
                         letter = "h";
                     } else {
-                        String letters =  currentHymnId.replaceAll("[^a-zA-Z].*", "");
+                        String letters = currentHymnId.replaceAll("[^a-zA-Z].*", "");
                         if (letters.length() > 1) {
                             letter = letters;
                         }
@@ -194,7 +198,7 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
                     startActivity(myIntent);
                 } catch (ActivityNotFoundException e) {
                     Toast.makeText(this, "No application can handle this request."
-                            + " Please install a webbrowser",  Toast.LENGTH_LONG).show();
+                            + " Please install a webbrowser", Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
                 break;
@@ -210,9 +214,16 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
     }
 
     void showSubmitDialog() {
+        if (currentHymnId == null || currentHymnId == "") {
+            return;
+        }
+        String saveLabel = "Save";
+        if (NetworkCache.hasInternet){
+            saveLabel = "Submit";
+        }
         String yt = NetworkCache.Preferences.getString(currentHymnId, "");
 
-        FrameLayout container = new FrameLayout(this);
+        final FrameLayout container = new FrameLayout(this);
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         params.leftMargin = 35;
         params.rightMargin = 35;
@@ -229,18 +240,27 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
                 .setTitle("YOUTUBE EMBED")
                 .setMessage("Enter youtube link")
                 .setView(container)
-                .setPositiveButton("Save", new DialogInterface.OnClickListener() {
+                .setPositiveButton(saveLabel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String task = String.valueOf(taskEditText.getText());
 
                         if (task.contains("https://youtu.be/") || task.contains("https://www.youtube.com/watch?v=")) {
+                            String ytId = NetworkCache.extractYTId(task);
+                            if (NetworkCache.hasInternet) {
+                                SheetItemPusher sp = new SheetItemPusher(container.getContext());
+                                sp.pushItem(currentHymnId, NetworkCache.extractYTId(task));
+                                Toast.makeText(taskEditText.getContext(), "Submitted", Toast.LENGTH_SHORT).show();
+                            }
                             SharedPreferences.Editor editor = NetworkCache.Preferences.edit();
                             editor.putString(currentHymnId, task);
                             editor.apply();
-                            Toast.makeText(taskEditText.getContext(), R.string.saved, Toast.LENGTH_SHORT).show();
-                            finish();
-                            startActivity(getIntent());
+                            if (NetworkCache.hasInternet == false) {
+                                Toast.makeText(taskEditText.getContext(), R.string.saved, Toast.LENGTH_SHORT).show();
+                            } else {
+                                finish();
+                                startActivity(getIntent());
+                            }
                         } else {
                             Toast.makeText(taskEditText.getContext(), R.string.invalidUrl, Toast.LENGTH_SHORT).show();
                         }

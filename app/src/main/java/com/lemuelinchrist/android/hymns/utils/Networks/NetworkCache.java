@@ -11,8 +11,9 @@ import androidx.preference.PreferenceManager;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.lemuelinchrist.android.hymns.content.YoutubeButton;
 import com.lemuelinchrist.android.hymns.entities.Hymn;
+
+import com.lemuelinchrist.android.hymns.utils.Networks.Servers.SheetItemsServer;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -26,9 +27,11 @@ public class NetworkCache {
     public static String HYMN_JSON_FILE = "hymn_tunes.json";
 
     public static void LoadHymnTunes(Context context) {
+
         if (Preferences == null) {
             Preferences = PreferenceManager.getDefaultSharedPreferences(context);
         }
+        hasInternet = isNetworkAvailable(context);
         String json = Preferences.getString(HYMN_JSON_FILE, null);
         if (json == null) {
             if (isNetworkAvailable(context)) {
@@ -39,6 +42,7 @@ public class NetworkCache {
             if (refreshTunes) {
                 if (isNetworkAvailable(context)) {
                     JsonFetch jsonFetch = new JsonFetch();
+                    jsonFetch.refresh = refreshTunes;
                     jsonFetch.execute();
                     refreshTunes = false;
                 } else {
@@ -76,6 +80,12 @@ public class NetworkCache {
 
 
     public static String extractYTId(String ytUrl) {
+        if (ytUrl == null || ytUrl == "") {
+            return "";
+        }
+        if (!ytUrl.contains("https://www.youtube.com/watch?v") && !ytUrl.contains("https://youtu.be/")) {
+            return ytUrl;
+        }
         String pattern = "(?<=youtu.be/|watch\\?v=|/videos/|embed\\/)[^#\\&\\?]*";
         Pattern compiledPattern = Pattern.compile(pattern);
         Matcher matcher = compiledPattern.matcher(ytUrl);

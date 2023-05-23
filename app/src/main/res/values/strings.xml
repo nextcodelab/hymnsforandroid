@@ -47,4 +47,5 @@
     <string name="similarTuneSwitch">Similar Tune Button</string>
     <string name="saved">Saved</string>
     <string name="invalidUrl">Invalid youtube link</string>
+    <string name="includeYoutubeEmbed">Include youtube embed video</string>
 </resources>

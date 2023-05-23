@@ -26,6 +26,7 @@ import com.lemuelinchrist.android.hymns.logbook.LogBook;
 import com.lemuelinchrist.android.hymns.style.Theme;
 import com.lemuelinchrist.android.hymns.utils.HymnStack;
 import com.lemuelinchrist.android.hymns.utils.Networks.JsonFetch;
+import com.lemuelinchrist.android.hymns.utils.Networks.NetworkCache;
 
 import java.util.HashSet;
 
@@ -206,12 +207,16 @@ public class ContentArea extends Fragment {
     }
 
     void setUpWebview(ViewGroup rootView) {
-        View youtubeWebViewCard = (View) rootView.findViewById(getRid("youtube_web_view_card")); //
-        WebView youtubeWebView = (WebView) rootView.findViewById(getRid("youtube_web_view")); //todo find or bind web view
-        JsonFetch jsonFetch = new JsonFetch();
-        jsonFetch.webView = youtubeWebView;
-        jsonFetch.cardView = youtubeWebViewCard;
-        jsonFetch.execute(hymn);
+        SharedPreferences sharedPreferences = androidx.preference.PreferenceManager.getDefaultSharedPreferences(context);
+        boolean showEmbed = sharedPreferences.getBoolean("embedYoutube", true);
+        if (showEmbed && NetworkCache.isNetworkAvailable(rootView.getContext())){
+            View youtubeWebViewCard = (View) rootView.findViewById(getRid("youtube_web_view_card")); //
+            WebView youtubeWebView = (WebView) rootView.findViewById(getRid("youtube_web_view")); //todo find or bind web view
+            JsonFetch jsonFetch = new JsonFetch();
+            jsonFetch.webView = youtubeWebView;
+            jsonFetch.cardView = youtubeWebViewCard;
+            jsonFetch.execute(hymn);
+        }
 
     }
 }

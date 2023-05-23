@@ -15,6 +15,7 @@ import androidx.cardview.widget.CardView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lemuelinchrist.android.hymns.entities.Hymn;
+import com.lemuelinchrist.android.hymns.utils.Networks.Servers.ConstantHelper;
 
 
 import org.json.JSONException;
@@ -33,6 +34,7 @@ import java.util.Scanner;
 public class JsonFetch extends AsyncTask<Hymn, Void, HymnYT> {
     public WebView webView;
     public View cardView;
+    public boolean refresh = false;
     @Override
     protected HymnYT doInBackground(Hymn... params) {
         Hymn hymn = null;
@@ -40,20 +42,22 @@ public class JsonFetch extends AsyncTask<Hymn, Void, HymnYT> {
             hymn = params[0];
         }
 
-        if (NetworkCache.hymnTunes != null) {
-            if (hymn != null) {
-                return NetworkCache.GetHymnTune(hymn);
+        if (refresh == false){
+            if (NetworkCache.hymnTunes != null) {
+                if (hymn != null) {
+                    return NetworkCache.GetHymnTune(hymn);
+                }
+                return null;
             }
-            return null;
         }
 
         Exception exception = null;
-        String urlString = "https://raw.githubusercontent.com/nextcodelab/hymnsforandroid/master/app/src/main/java/com/lemuelinchrist/android/hymns/utils/Networks/hymn_tunes.json";
+
         URL url = null;
         URLConnection urlConnection = null;
         try {
 
-            url = new URL(urlString);
+            url = new URL(ConstantHelper.SCRIPT_URL);
             urlConnection = url.openConnection();
             urlConnection.setConnectTimeout(1000);
 

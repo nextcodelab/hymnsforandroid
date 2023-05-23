@@ -1,4 +1,5 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory>
 
@@ -49,6 +50,12 @@
                 app:title="@string/similarTuneSwitch"
                 app:summary="Enable Button for switching to hymns with a similar tune"
                 app:icon="@drawable/ic_related_hymns_black_32dp"/>
+        <SwitchPreferenceCompat
+            app:key="embedYoutube"
+            app:defaultValue="true"
+            app:title="@string/includeYoutubeEmbed"
+            app:summary="Enable youtube video at the bottom of hymn ready to play"
+            app:icon="@drawable/ic_youtube_black_28dp"/>
         <Preference
                 app:key="about"
                 app:title="About Hymns"
