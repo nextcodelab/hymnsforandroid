@@ -36,6 +36,7 @@ public class NetworkCache {
         if (json == null) {
             if (isNetworkAvailable(context)) {
                 JsonFetch jsonFetch = new JsonFetch();
+                jsonFetch.refresh = true;
                 jsonFetch.execute();
             }
         } else {
@@ -50,6 +51,7 @@ public class NetworkCache {
                 }
             } else {
                 jsonToList(json);
+                NetworkHelper.refreshCounter(context);
             }
         }
 

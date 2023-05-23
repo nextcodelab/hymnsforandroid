@@ -22,7 +22,7 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class NetworkHelper {
-    public static String getResponse(String urlStr)  {
+    public static String getResponse(String urlStr) {
         Exception exception = null;
         String urlString = urlStr;
         URL url = null;
@@ -45,12 +45,13 @@ public class NetworkHelper {
 
 
     }
+
     public static HymnYT[] jsonToList(String json) {
         String result = json;
         final ObjectMapper objectMapper = new ObjectMapper();
         if (result != null && result != "") {
             try {
-               return objectMapper.readValue(result, HymnYT[].class);
+                return objectMapper.readValue(result, HymnYT[].class);
             } catch (JsonProcessingException e) {
                 throw new RuntimeException(e);
             }
@@ -58,7 +59,8 @@ public class NetworkHelper {
         }
         return null;
     }
-    public static void pushAllJson(Context context){
+
+    public static void pushAllJson(Context context) {
         for (HymnYT hm : NetworkCache.hymnTunes) {
             String id = hm.unique_id;
             String link = NetworkCache.extractYTId(hm.youtube_link);
@@ -66,5 +68,23 @@ public class NetworkHelper {
             sp.pushItem(id, link);
         }
         Toast.makeText(context, "Sucess All Push", Toast.LENGTH_LONG).show();
+    }
+
+    public static void refreshCounter(Context context) {
+        String key = "refresh_counter";
+        int counter = NetworkCache.Preferences.getInt(key, 0);
+        counter++;
+        if (counter >= 10) {
+            if (NetworkCache.hasInternet) {
+                counter = 0;
+                JsonFetch jsonFetch = new JsonFetch();
+                jsonFetch.refresh = true;
+                jsonFetch.execute();
+                Toast.makeText(context, "Refreshing", Toast.LENGTH_LONG).show();
+            }
+            NetworkCache.Preferences.edit().putInt(key, counter);
+        } else {
+            NetworkCache.Preferences.edit().putInt(key, counter);
+        }
     }
 }
