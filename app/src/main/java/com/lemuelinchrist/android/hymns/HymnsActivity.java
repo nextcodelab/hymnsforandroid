@@ -215,10 +215,7 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
                 NetworkCache.refreshTunes = true;
                 NetworkCache.LoadHymnTunes(this);
                 break;
-            case R.id.share_apk:
-                shareApplication();
-                item.setVisible(false);
-                break;
+
             case R.id.share_apk_link:
                 ShareAPKLink();
                 break;

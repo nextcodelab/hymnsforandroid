@@ -42,7 +42,6 @@
             android:windowSoftInputMode="stateVisible|adjustResize">
             <intent-filter>
                 <action android:name="com.lemuelinchrist.hymns.INDEX" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -52,7 +51,6 @@
             android:theme="@style/NoActionBar">
             <intent-filter>
                 <action android:name="com.lemuelinchrist.hymns.SHEET_MUSIC" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

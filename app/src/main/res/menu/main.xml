@@ -31,13 +31,12 @@
         android:icon="@drawable/ic_settings_white_48dp"
         android:title="Hymnal.Net"
         />
-    <item
+    <!--<item
         android:id="@+id/share_apk"
-        android:menuCategory="secondary"
-        yourapp:showAsAction="never"
         android:icon="@drawable/ic_settings_white_48dp"
+        android:menuCategory="secondary"
         android:title="Share Hymn APK"
-        />
+        yourapp:showAsAction="never" />-->
     <item
         android:id="@+id/share_apk_link"
         android:menuCategory="secondary"
