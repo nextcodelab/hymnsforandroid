@@ -217,6 +217,7 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
                 break;
             case R.id.share_apk:
                 shareApplication();
+                item.setVisible(false);
                 break;
             case R.id.share_apk_link:
                 ShareAPKLink();
