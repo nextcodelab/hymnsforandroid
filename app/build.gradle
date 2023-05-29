@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'idea'
 
 // you can choose to put either "guitarSvg" or "pianoSvg" depending on the sheet music you want to include
-def svgFolderName = "pianoSvg"
+def svgFolderName = "guitarSvg"
 def hymnAppVersion = "v4.7-Guitar"
 //def androidVersion = '28.0.0'
 // filename: HymnsForAndroidv4.x-Piano.apk
