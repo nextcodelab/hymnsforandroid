@@ -397,3 +397,8 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+
+# Customs
+hymnforwindows/obj
+hymnforwindows/Debug
