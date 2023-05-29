@@ -24,5 +24,25 @@ namespace hymnforwindows
         {
             InitializeComponent();
         }
+
+        private void MenuOpen_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuOllllllpen_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UIElement_OnPreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void MenuToggleButton_OnClick(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -1,12 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "J5+Fnq22mE6SZmURgIxT065azELKtfbB0Svi+9EW0O5BO7Gys4vnb92K4AuGcAqYiH+Q8P+4RN35nq6nSgRGSQ==",
+  "dgSpecHash": "FDrcKxlYCRCL1cQ7HNY/gqUy8msAEGNnq1Mmxbukh3jaWEBU5v1FD3SQIEITuxG27+nt0af56u+o7HeWQbrmEA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Robel\\source\\repos\\hymnsforandroid\\windows\\hymnforwindows\\hymnforwindows\\hymnforwindows.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Robel\\.nuget\\packages\\avalonedit\\6.0.1\\avalonedit.6.0.1.nupkg.sha512",
     "C:\\Users\\Robel\\.nuget\\packages\\materialdesigncolors\\2.1.4\\materialdesigncolors.2.1.4.nupkg.sha512",
     "C:\\Users\\Robel\\.nuget\\packages\\materialdesignthemes\\4.9.0\\materialdesignthemes.4.9.0.nupkg.sha512",
-    "C:\\Users\\Robel\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.39\\microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512"
+    "C:\\Users\\Robel\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.39\\microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512",
+    "C:\\Users\\Robel\\.nuget\\packages\\showmethexaml\\2.0.0\\showmethexaml.2.0.0.nupkg.sha512",
+    "C:\\Users\\Robel\\.nuget\\packages\\showmethexaml.avalonedit\\2.0.0\\showmethexaml.avalonedit.2.0.0.nupkg.sha512",
+    "C:\\Users\\Robel\\.nuget\\packages\\showmethexaml.msbuild\\2.0.0\\showmethexaml.msbuild.2.0.0.nupkg.sha512",
+    "C:\\Users\\Robel\\.nuget\\packages\\virtualizingwrappanel\\1.5.7\\virtualizingwrappanel.1.5.7.nupkg.sha512"
   ],
   "logs": []
 }

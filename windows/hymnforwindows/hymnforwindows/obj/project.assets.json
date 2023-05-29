@@ -2,6 +2,22 @@
   "version": 3,
   "targets": {
     "net6.0-windows7.0": {
+      "AvalonEdit/6.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.0/ICSharpCode.AvalonEdit.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/ICSharpCode.AvalonEdit.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App"
+        ]
+      },
       "MaterialDesignColors/2.1.4": {
         "type": "package",
         "compile": {
@@ -50,10 +66,82 @@
         "frameworkReferences": [
           "Microsoft.WindowsDesktop.App.WPF"
         ]
+      },
+      "ShowMeTheXAML/2.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/ShowMeTheXAML.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/ShowMeTheXAML.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
+      "ShowMeTheXAML.AvalonEdit/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "AvalonEdit": "6.0.1",
+          "ShowMeTheXAML": "2.0.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/ShowMeTheXAML.AvalonEdit.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/ShowMeTheXAML.AvalonEdit.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
+      "ShowMeTheXAML.MSBuild/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "ShowMeTheXAML": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "build": {
+          "build/netstandard2.0/ShowMeTheXAML.MSBuild.targets": {}
+        }
+      },
+      "VirtualizingWrapPanel/1.5.7": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-windows7.0/VirtualizingWrapPanel.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/VirtualizingWrapPanel.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
       }
     }
   },
   "libraries": {
+    "AvalonEdit/6.0.1": {
+      "sha512": "JmRwKMDRUUkUGLQmTtIHiSgFSQH9567b2/55Wa/gQp+ZtxQN+mnl5Qt6B/Kgz56FMnnDyE/fV23r7J2SV+NP7g==",
+      "type": "package",
+      "path": "avalonedit/6.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "avalonedit.6.0.1.nupkg.sha512",
+        "avalonedit.nuspec",
+        "lib/net40/ICSharpCode.AvalonEdit.dll",
+        "lib/net40/ICSharpCode.AvalonEdit.xml",
+        "lib/net45/ICSharpCode.AvalonEdit.dll",
+        "lib/net45/ICSharpCode.AvalonEdit.xml",
+        "lib/netcoreapp3.0/ICSharpCode.AvalonEdit.dll",
+        "lib/netcoreapp3.0/ICSharpCode.AvalonEdit.xml"
+      ]
+    },
     "MaterialDesignColors/2.1.4": {
       "sha512": "C4Oy+qkjMoMPoZKyqYdCnIYtK8c0OSIHmNP73Vgc69NjiUG093xTkE7W/Ks54cTDS7fmWOtUHfwISTVTtb/YKg==",
       "type": "package",
@@ -143,11 +231,94 @@
         "microsoft.xaml.behaviors.wpf.nuspec",
         "tools/Install.ps1"
       ]
+    },
+    "ShowMeTheXAML/2.0.0": {
+      "sha512": "ljDrkSyGhx3EKIq73c9317m7NsvTjCKVdO0vnqzjwdWAgFkpdfrEd3Nn6uF/Mc+QUTSUfFfjmONJDfYSPwCB3g==",
+      "type": "package",
+      "path": "showmethexaml/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/monoandroid10.0/ShowMeTheXAML.dll",
+        "lib/monoandroid90/ShowMeTheXAML.dll",
+        "lib/net472/ShowMeTheXAML.dll",
+        "lib/netcoreapp3.1/ShowMeTheXAML.dll",
+        "lib/netstandard2.0/ShowMeTheXAML.dll",
+        "lib/uap10.0.17763/ShowMeTheXAML.dll",
+        "lib/uap10.0.17763/ShowMeTheXAML.pri",
+        "lib/xamarinios10/ShowMeTheXAML.dll",
+        "lib/xamarinmac20/ShowMeTheXAML.dll",
+        "showmethexaml.2.0.0.nupkg.sha512",
+        "showmethexaml.nuspec"
+      ]
+    },
+    "ShowMeTheXAML.AvalonEdit/2.0.0": {
+      "sha512": "dygU2s8iFNmXMNWYnXTxT0qWB7K2gwvinpmep1ILgDoZUsBytRhS+SjGAqdORXz0Hsfvl2he9rTLnKj95TspDQ==",
+      "type": "package",
+      "path": "showmethexaml.avalonedit/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net472/ShowMeTheXAML.AvalonEdit.dll",
+        "lib/netcoreapp3.1/ShowMeTheXAML.AvalonEdit.dll",
+        "showmethexaml.avalonedit.2.0.0.nupkg.sha512",
+        "showmethexaml.avalonedit.nuspec"
+      ]
+    },
+    "ShowMeTheXAML.MSBuild/2.0.0": {
+      "sha512": "EilS9tMJdusWau9tFMmvPOX+uO8eUGy7I4UHIar+g2xkRgRlT/F3yDJY5jq2jDmzwzx4DUsZo48r37Y3R/R78A==",
+      "type": "package",
+      "path": "showmethexaml.msbuild/2.0.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/monoandroid10.0/ShowMeTheXAML.MSBuild.targets",
+        "build/monoandroid90/ShowMeTheXAML.MSBuild.targets",
+        "build/net472/ShowMeTheXAML.MSBuild.targets",
+        "build/netstandard2.0/ShowMeTheXAML.MSBuild.targets",
+        "build/uap10.0.17763/ShowMeTheXAML.MSBuild.targets",
+        "build/xamarinios10/ShowMeTheXAML.MSBuild.targets",
+        "build/xamarinmac20/ShowMeTheXAML.MSBuild.targets",
+        "lib/monoandroid10.0/_._",
+        "lib/monoandroid90/_._",
+        "lib/net472/_._",
+        "lib/netstandard2.0/_._",
+        "lib/uap10.0.17763/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "showmethexaml.msbuild.2.0.0.nupkg.sha512",
+        "showmethexaml.msbuild.nuspec",
+        "tools/netcore/ShowMeTheXAML.MSBuild.deps.json",
+        "tools/netcore/ShowMeTheXAML.MSBuild.dll",
+        "tools/netcore/ShowMeTheXAML.MSBuild.pdb",
+        "tools/netframework/ShowMeTheXAML.MSBuild.dll",
+        "tools/netframework/ShowMeTheXAML.MSBuild.pdb"
+      ]
+    },
+    "VirtualizingWrapPanel/1.5.7": {
+      "sha512": "BdeoOELIQU6m3KXlbi+vSPuiDS3PFhkYHWrPAjkwAOLEk47vKWUYIhgm/XRHLyFL6my+NsmHigtYt+9YBNJYcg==",
+      "type": "package",
+      "path": "virtualizingwrappanel/1.5.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net452/VirtualizingWrapPanel.dll",
+        "lib/net5.0-windows7.0/VirtualizingWrapPanel.dll",
+        "lib/net6.0-windows7.0/VirtualizingWrapPanel.dll",
+        "lib/netcoreapp3.1/VirtualizingWrapPanel.dll",
+        "virtualizingwrappanel.1.5.7.nupkg.sha512",
+        "virtualizingwrappanel.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
-      "MaterialDesignThemes >= 4.9.0"
+      "MaterialDesignThemes >= 4.9.0",
+      "ShowMeTheXAML >= 2.0.0",
+      "ShowMeTheXAML.AvalonEdit >= 2.0.0",
+      "ShowMeTheXAML.MSBuild >= 2.0.0",
+      "VirtualizingWrapPanel >= 1.5.7"
     ]
   },
   "packageFolders": {
@@ -198,6 +369,22 @@
           "MaterialDesignThemes": {
             "target": "Package",
             "version": "[4.9.0, )"
+          },
+          "ShowMeTheXAML": {
+            "target": "Package",
+            "version": "[2.0.0, )"
+          },
+          "ShowMeTheXAML.AvalonEdit": {
+            "target": "Package",
+            "version": "[2.0.0, )"
+          },
+          "ShowMeTheXAML.MSBuild": {
+            "target": "Package",
+            "version": "[2.0.0, )"
+          },
+          "VirtualizingWrapPanel": {
+            "target": "Package",
+            "version": "[1.5.7, )"
           }
         },
         "imports": [
