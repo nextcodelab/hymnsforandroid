@@ -401,3 +401,4 @@ google-services.json
 # Customs
 hymnforwindows/obj
 hymnforwindows/Debug
+*.vs

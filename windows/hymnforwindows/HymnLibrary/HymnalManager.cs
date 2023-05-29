@@ -421,5 +421,10 @@ namespace HymnLibrary
 
             }
         }
+        public static string GetOriginalSQLiteSource()
+        {
+            return "https://github.com/lemuelinchrist/hymnsforandroid/raw/master/app/src/main/assets/hymns.sqlite";
+        }
     }
+    
 }
