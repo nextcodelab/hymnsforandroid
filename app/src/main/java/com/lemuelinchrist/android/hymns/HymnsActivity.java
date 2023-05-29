@@ -296,7 +296,7 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
         startActivity(Intent.createChooser(intent, "Share Using"));
     }
     private void ShareAPKLink(){
-        String link = "https://github.com/nextcodelab/hymnsforandroid/raw/master/app/release/app-release.apk";
+        String link = "https://github.com/nextcodelab/hymnsforandroid/raw/master/app/release/HymnsForAndroid.apk";
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_TEXT, link);
