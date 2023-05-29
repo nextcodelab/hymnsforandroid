@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "DQ9bvTCxhF/0IvlYJBYoY7M3SSNins6UkHxnOmihgN9WyxdTu1rlqqk3SGh6wcq/yJ7Mv0XhwoD3xOQHjQxXxQ==",
+  "dgSpecHash": "J5+Fnq22mE6SZmURgIxT065azELKtfbB0Svi+9EW0O5BO7Gys4vnb92K4AuGcAqYiH+Q8P+4RN35nq6nSgRGSQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Robel\\source\\repos\\hymnsforandroid\\windows\\hymnforwindows\\hymnforwindows\\hymnforwindows.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Robel\\.nuget\\packages\\materialdesigncolors\\2.1.4\\materialdesigncolors.2.1.4.nupkg.sha512",
+    "C:\\Users\\Robel\\.nuget\\packages\\materialdesignthemes\\4.9.0\\materialdesignthemes.4.9.0.nupkg.sha512",
+    "C:\\Users\\Robel\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.39\\microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512"
+  ],
   "logs": []
 }
