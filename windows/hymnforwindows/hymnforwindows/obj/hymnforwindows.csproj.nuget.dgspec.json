@@ -49,6 +49,10 @@
               "target": "Package",
               "version": "[4.9.0, )"
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
             "ShowMeTheXAML": {
               "target": "Package",
               "version": "[2.0.0, )"
@@ -64,6 +68,10 @@
             "VirtualizingWrapPanel": {
               "target": "Package",
               "version": "[1.5.7, )"
+            },
+            "sqlite-net-pcl": {
+              "target": "Package",
+              "version": "[1.8.116, )"
             }
           },
           "imports": [
