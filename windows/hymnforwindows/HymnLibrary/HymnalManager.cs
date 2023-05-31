@@ -16,7 +16,7 @@ namespace HymnLibrary
 {
     public class HymnalManager
     {
-        public static string SQLiteFilePath { get; private set; } = "hymns.sqlite";
+        public static string SQLiteFilePath { get; private set; } = Path.Combine(DatabaseDirectory.Dir, "hymns.sqlite");
         static bool processing = false;
         public static async void InitData()
         {
@@ -25,7 +25,7 @@ namespace HymnLibrary
             processing = true;
             if (File.Exists(SQLiteFilePath) == false)
             {
-                var input = DatabaseDirectory.GetEmbeddedResourceStreamAsync("hymnforwindows.Data.hymns.sqlite", typeof(HymnalManager));
+                var input = DatabaseDirectory.GetEmbeddedResourceStreamAsync("HymnLibrary.Data.hymns.sqlite", typeof(HymnalManager));
                 using (Stream file = File.Create(SQLiteFilePath))
                 {
                     await input.CopyToAsync(file);
@@ -33,6 +33,7 @@ namespace HymnLibrary
             }
             processing = false;
         }
+       
         public static SQLiteConnection GetHymnalConnection()
         {
             return new SQLite.SQLiteConnection(SQLiteFilePath);
@@ -424,6 +425,10 @@ namespace HymnLibrary
         public static string GetOriginalSQLiteSource()
         {
             return "https://github.com/lemuelinchrist/hymnsforandroid/raw/master/app/src/main/assets/hymns.sqlite";
+        }
+        public static string AlignStanza(string stanza)
+        {
+            return stanza.Replace("<br/>", "\n");
         }
     }
     

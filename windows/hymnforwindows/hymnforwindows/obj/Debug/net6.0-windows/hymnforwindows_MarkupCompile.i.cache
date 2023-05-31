@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\Robel\source\repos\hymnsforandroid\windows\hymnforwindows\hymnforwindows\App.xaml
-11407045341
+3944614312
 
-71009601082
-216791950842
-MainWindow.xaml;
+9849874444
+217-605704743
+Controls\HymnContentControl.xaml;Controls\StanzaCardControl.xaml;MainWindow.xaml;
 
 False
 

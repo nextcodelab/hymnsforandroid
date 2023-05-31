@@ -262,6 +262,20 @@
         "frameworkReferences": [
           "Microsoft.WindowsDesktop.App.WPF"
         ]
+      },
+      "HymnLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3",
+          "sqlite-net-pcl": "1.8.116"
+        },
+        "compile": {
+          "bin/placeholder/HymnLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HymnLibrary.dll": {}
+        }
       }
     }
   },
@@ -590,10 +604,16 @@
         "virtualizingwrappanel.1.5.7.nupkg.sha512",
         "virtualizingwrappanel.nuspec"
       ]
+    },
+    "HymnLibrary/1.0.0": {
+      "type": "project",
+      "path": "../HymnLibrary/HymnLibrary.csproj",
+      "msbuildProject": "../HymnLibrary/HymnLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
+      "HymnLibrary >= 1.0.0",
       "MaterialDesignThemes >= 4.9.0",
       "Newtonsoft.Json >= 13.0.3",
       "ShowMeTheXAML >= 2.0.0",
@@ -635,7 +655,11 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Robel\\source\\repos\\hymnsforandroid\\windows\\hymnforwindows\\HymnLibrary\\HymnLibrary.csproj": {
+              "projectPath": "C:\\Users\\Robel\\source\\repos\\hymnsforandroid\\windows\\hymnforwindows\\HymnLibrary\\HymnLibrary.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

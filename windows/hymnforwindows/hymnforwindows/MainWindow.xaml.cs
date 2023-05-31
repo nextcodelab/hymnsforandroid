@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HymnLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,15 @@ namespace hymnforwindows
         public MainWindow()
         {
             InitializeComponent();
+            this.Loaded += MainWindow_Loaded;
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            HymnalManager.InitData();
+            var hymn = HymnalManager.GetFirstHymn();
+            this.headrTxt.Text = hymn._id;
+            hymnContent.SetHymn(hymn);
         }
 
         private void MenuOpen_Click(object sender, RoutedEventArgs e)

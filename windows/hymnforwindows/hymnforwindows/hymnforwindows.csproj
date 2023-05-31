@@ -8,14 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Data\hymns.sqlite" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Data\hymns.sqlite" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="ShowMeTheXAML" Version="2.0.0" />
@@ -23,6 +15,10 @@
     <PackageReference Include="ShowMeTheXAML.MSBuild" Version="2.0.0" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
     <PackageReference Include="VirtualizingWrapPanel" Version="1.5.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HymnLibrary\HymnLibrary.csproj" />
   </ItemGroup>
 
 </Project>

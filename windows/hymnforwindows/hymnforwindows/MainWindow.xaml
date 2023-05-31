@@ -7,6 +7,7 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:system="clr-namespace:System;assembly=mscorlib"
+    xmlns:controls="clr-namespace:hymnforwindows.Controls"
     Title="MainWindow"
     Width="800"
     Height="450"
@@ -33,7 +34,13 @@
                         Style="{StaticResource MaterialDesignFlatButton}" />
                 </StackPanel>
             </DataTemplate>
+            <Style TargetType="TextBlock" x:Key="TextBlockHymnHeaderStyle">
+                <Setter  Property="FontWeight" Value="Bold"></Setter>
+                <Setter Property="FontSize" Value="23"></Setter>
+                <Setter Property="TextWrapping" Value="Wrap"></Setter>
+            </Style>
         </ResourceDictionary>
+        
     </Window.Resources>
     <Grid>
         <materialDesign:DialogHost DialogTheme="Inherit" Identifier="RootDialog">
@@ -103,6 +110,7 @@
 
                                 <TextBlock
                                     x:Name="headrTxt"
+                                    Style="{StaticResource TextBlockHymnHeaderStyle}"
                                     Margin="12,0,0,0"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
@@ -147,17 +155,16 @@
                     </materialDesign:ColorZone>
 
                     <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
 
 
-
+                        <Grid x:Name="contentGrid">
+                            <controls:HymnContentControl x:Name="hymnContent"></controls:HymnContentControl>
+                        </Grid>
 
                         <materialDesign:Snackbar
                             x:Name="MainSnackbar"
                             Grid.Row="1"
+                            VerticalAlignment="Bottom"
                             MessageQueue="{materialDesign:MessageQueue}" />
                     </Grid>
                 </DockPanel>
