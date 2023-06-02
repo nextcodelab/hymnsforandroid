@@ -2,12 +2,12 @@
     x:Class="hymnforwindows.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:hymnforwindows.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:hymnforwindows"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:system="clr-namespace:System;assembly=mscorlib"
-    xmlns:controls="clr-namespace:hymnforwindows.Controls"
     Title="MainWindow"
     Width="800"
     Height="450"
@@ -34,13 +34,14 @@
                         Style="{StaticResource MaterialDesignFlatButton}" />
                 </StackPanel>
             </DataTemplate>
-            <Style TargetType="TextBlock" x:Key="TextBlockHymnHeaderStyle">
-                <Setter  Property="FontWeight" Value="Bold"></Setter>
-                <Setter Property="FontSize" Value="23"></Setter>
-                <Setter Property="TextWrapping" Value="Wrap"></Setter>
+            <Style x:Key="TextBlockHymnHeaderStyle" TargetType="TextBlock">
+                <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="FontSize" Value="23" />
+                <Setter Property="TextWrapping" Value="Wrap" />
+                <Setter Property="Foreground" Value="White" />
             </Style>
         </ResourceDictionary>
-        
+
     </Window.Resources>
     <Grid>
         <materialDesign:DialogHost DialogTheme="Inherit" Identifier="RootDialog">
@@ -53,12 +54,13 @@
                     <DockPanel MinWidth="220">
                         <ToggleButton
                             Margin="16"
-                            HorizontalAlignment="Right"
+                            HorizontalAlignment="Left"
                             DockPanel.Dock="Top"
+                            Foreground="White"
                             IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}"
                             Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
 
-                        <TextBox
+                        <!--<TextBox
                             x:Name="DemoItemsSearchBox"
                             Width="200"
                             Margin="16,4"
@@ -67,7 +69,7 @@
                             materialDesign:TextFieldAssist.HasClearButton="True"
                             DockPanel.Dock="Top"
                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                            Text="{Binding SearchKeyword, UpdateSourceTrigger=PropertyChanged}" />
+                            Text="{Binding SearchKeyword, UpdateSourceTrigger=PropertyChanged}" />-->
 
                         <ListBox
                             x:Name="DemoItemsListBox"
@@ -104,28 +106,30 @@
                                     x:Name="MenuToggleButton"
                                     AutomationProperties.Name="HamburgerToggleButton"
                                     Click="MenuToggleButton_OnClick"
+                                    Foreground="White"
                                     IsChecked="False"
                                     Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
 
 
                                 <TextBlock
                                     x:Name="headrTxt"
-                                    Style="{StaticResource TextBlockHymnHeaderStyle}"
                                     Margin="12,0,0,0"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     AutomationProperties.Name="{Binding ElementName=headrTxt, Path=Text}"
                                     FontSize="22"
+                                    Style="{StaticResource TextBlockHymnHeaderStyle}"
                                     Text="E1" />
                             </StackPanel>
-                            <!--Seconadary Menu-->
+                            <!--  Seconadary Menu  -->
                             <materialDesign:PopupBox
                                 DockPanel.Dock="Right"
+                                Foreground="White"
                                 PlacementMode="BottomAndAlignRightEdges"
                                 StaysOpen="False">
 
                                 <StackPanel>
-                                   
+
 
                                     <Separator />
 
@@ -133,7 +137,7 @@
 
                                     <Button Content="Hymnal.Net" />
 
-                                    
+
                                     <Separator />
 
                                     <Button Content="Linl" />
@@ -141,16 +145,22 @@
                             </materialDesign:PopupBox>
 
                             <Grid HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            <Button
-                                HorizontalAlignment="Right"
-                                Margin="16,0,0,0"
-                                materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"
-                                Command="{Binding HomeCommand}"
-                                Content="{materialDesign:PackIcon Kind=Settings,
-                                                                  Size=24}"
-                                Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"
-                                Style="{StaticResource MaterialDesignToolButton}"
-                                ToolTip="Home" />
+                            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                <controls:SearchBoxControl
+                                    x:Name="autoSearchBox"
+                                    HorizontalAlignment="Right"
+                                    HorizontalContentAlignment="Right" />
+                                <Button
+                                    Margin="16,0,0,0"
+                                    HorizontalAlignment="Right"
+                                    materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"
+                                    Command="{Binding HomeCommand}"
+                                    Content="{materialDesign:PackIcon Kind=Settings,
+                                                                      Size=24}"
+                                    Foreground="White"
+                                    Style="{StaticResource MaterialDesignToolButton}"
+                                    ToolTip="Home" />
+                            </StackPanel>
                         </DockPanel>
                     </materialDesign:ColorZone>
 
@@ -158,7 +168,7 @@
 
 
                         <Grid x:Name="contentGrid">
-                            <controls:HymnContentControl x:Name="hymnContent"></controls:HymnContentControl>
+                            <controls:HymnContentControl x:Name="hymnContent" />
                         </Grid>
 
                         <materialDesign:Snackbar

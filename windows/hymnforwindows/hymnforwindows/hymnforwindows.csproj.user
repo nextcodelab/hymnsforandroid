@@ -10,12 +10,18 @@
     <Compile Update="Controls\HymnContentControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\SearchBoxControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\StanzaCardControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\HymnContentControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\SearchBoxControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\StanzaCardControl.xaml">

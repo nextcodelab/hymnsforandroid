@@ -16,7 +16,7 @@
         </Style>
     </UserControl.Resources>
     <Grid>
-        <StackPanel HorizontalAlignment="Center">
+        <StackPanel HorizontalAlignment="Left">
             <TextBlock x:Name="numberText" Style="{StaticResource TextBlockStanzaStyle}" Foreground="Goldenrod">1</TextBlock>
             <TextBlock Style="{StaticResource TextBlockStanzaStyle}" x:Name="stanzaText"   />
 

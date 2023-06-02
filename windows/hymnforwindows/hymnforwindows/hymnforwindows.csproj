@@ -21,4 +21,8 @@
     <ProjectReference Include="..\HymnLibrary\HymnLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UI\" />
+  </ItemGroup>
+
 </Project>

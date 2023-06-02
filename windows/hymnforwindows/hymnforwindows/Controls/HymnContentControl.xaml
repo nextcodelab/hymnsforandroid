@@ -7,8 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <ScrollViewer>
-            <StackPanel x:Name="stanzaPanel">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel  HorizontalAlignment="Center" x:Name="stanzaPanel">
                
             </StackPanel>
         </ScrollViewer>
