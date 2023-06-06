@@ -16,7 +16,8 @@ namespace HymnLibrary
 {
     public class HymnalManager
     {
-        public static string SQLiteFilePath { get; private set; } = Path.Combine(DatabaseDirectory.Dir, "hymns.sqlite");
+        public const string HYMN_FILE = "hymns.sqlite";
+        public static string SQLiteFilePath { get; private set; } = Path.Combine(DatabaseDirectory.Dir, HYMN_FILE);
         static bool processing = false;
         public static async void InitData()
         {
@@ -25,7 +26,7 @@ namespace HymnLibrary
             processing = true;
             if (File.Exists(SQLiteFilePath) == false)
             {
-                var input = DatabaseDirectory.GetEmbeddedResourceStreamAsync("HymnLibrary.Data.hymns.sqlite", typeof(HymnalManager));
+                var input = DatabaseDirectory.GetEmbeddedResourceStreamAsync("Engine.Data.hymns.sqlite", typeof(HymnalManager));
                 using (Stream file = File.Create(SQLiteFilePath))
                 {
                     await input.CopyToAsync(file);
@@ -33,7 +34,6 @@ namespace HymnLibrary
             }
             processing = false;
         }
-       
         public static SQLiteConnection GetHymnalConnection()
         {
             return new SQLite.SQLiteConnection(SQLiteFilePath);
@@ -52,11 +52,10 @@ namespace HymnLibrary
             query = query.ToLower();
             using (var session = new SQLite.SQLiteConnection(SQLiteFilePath))
             {
-                session.CreateTable<Hymn>();
-                session.GetMapping<Hymn>();
+
                 try
                 {
-                    list = session.Table<Hymn>().Where(p => p.no.ToLower().Contains(query)
+                    list = session.Table<Hymn>().Where(p => p.no.ToString().ToLower().Contains(query)
                 | p._id.ToLower().Contains(query)
                 | p.hymn_group.ToLower().Contains(query)
                 | p.first_stanza_line.ToLower().Contains(query)
@@ -83,12 +82,14 @@ namespace HymnLibrary
         }
         public static Hymn GetHymnById(string hymnalId)
         {
+
             using (var db = GetHymnalConnection())
             {
+
                 return db.Table<Hymn>().Where(p => p._id == hymnalId).FirstOrDefault();
             }
         }
-        public static List<Hymn> GetHymnsByNumber(string no)
+        public static List<Hymn> GetHymnsByNumber(int no)
         {
             using (var db = GetHymnalConnection())
             {
@@ -121,6 +122,26 @@ namespace HymnLibrary
             using (var db = GetHymnalConnection())
             {
                 return db.Table<Midi>().Where(p => p.tune_id == tuneId).FirstOrDefault();
+            }
+        }
+        /// <summary>
+        /// Example code for Cebuano = CB 
+        /// </summary>
+        /// <param name="startLanguageCode"></param>
+        /// <returns></returns>
+        public static Hymn CreateNewHymn(string startLanguageCode)
+        {
+            using (var db = GetHymnalConnection())
+            {
+                db.CreateTable<Hymn>();
+                db.GetMapping<Hymn>();
+                var hm = db.Table<Hymn>().LastOrDefault();
+                int no = 0;
+                if (hm != null)
+                {
+                    no = hm.no + 1;
+                }
+                return new Hymn() { no = no, _id = startLanguageCode + no, };
             }
         }
         public static string GetGuitarSVG(string hymnalId)
@@ -182,8 +203,8 @@ namespace HymnLibrary
                         {
                             stanzasFinal.Add(stanza);
                             stanzasFinal.Add(chorus);
-                        }                       
-                        
+                        }
+
                     }
                     else
                     {
@@ -409,6 +430,7 @@ namespace HymnLibrary
                 }
                 else
                 {
+
                     var json = await NetworkHelper.DownloadstringAsync(url);
                     if (!string.IsNullOrEmpty(json))
                     {
@@ -422,14 +444,10 @@ namespace HymnLibrary
 
             }
         }
-        public static string GetOriginalSQLiteSource()
-        {
-            return "https://github.com/lemuelinchrist/hymnsforandroid/raw/master/app/src/main/assets/hymns.sqlite";
-        }
         public static string AlignStanza(string stanza)
         {
-            return stanza.Replace("<br/>", "\n");
+            return stanza;
         }
     }
-    
+
 }

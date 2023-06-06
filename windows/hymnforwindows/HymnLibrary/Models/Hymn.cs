@@ -11,9 +11,7 @@ namespace HymnLibrary.Models
     [Table("hymns")]
     public class Hymn
     {
-        [JsonIgnore]
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        [PrimaryKey]
         public string _id { get; set; }
         public string author { get; set; }
         public string composer { get; set; }
@@ -23,7 +21,8 @@ namespace HymnLibrary.Models
         public string key { get; set; }
         public string main_category { get; set; }
         public string meter { get; set; }
-        public string no { get; set; }
+
+        public int no { get; set; }
         public string parent_hymn { get; set; }
         public string related { get; set; }
         public string sheet_music_link { get; set; }
@@ -38,11 +37,11 @@ namespace HymnLibrary.Models
     {
         [JsonIgnore]
         [PrimaryKey, AutoIncrement]
-        public int row_id { get; set; }
+        public int id { get; set; }
         public string parent_hymn { get; set; }
         public string no { get; set; }
         public string text { get; set; }
-        public int id { get; set; }
+
         public int n_order { get; set; }
         public string note { get; set; }
 
@@ -55,13 +54,16 @@ namespace HymnLibrary.Models
     [Table("hymns_stanza")]
     public class HymnStanza
     {
+        [JsonIgnore]
+        [PrimaryKey, AutoIncrement]
+        public int id { get; set; }
         public string _id { get; set; }
         public string author { get; set; }
         public string composer { get; set; }
-        public object first_chorus_line { get; set; }
+        public string first_chorus_line { get; set; }
         public string first_stanza_line { get; set; }
         public string hymn_group { get; set; }
-        public int id { get; set; }
+
         public string key { get; set; }
         public string main_category { get; set; }
         public string meter { get; set; }
@@ -71,8 +73,8 @@ namespace HymnLibrary.Models
         [JsonProperty("no:1")]
         [Column("no:1")]
         public string no1 { get; set; }
-        public object note { get; set; }
-        public object parent_hymn { get; set; }
+        public string note { get; set; }
+        public string parent_hymn { get; set; }
 
         [JsonProperty("parent_hymn:1")]
         [Column("parent_hymn:1")]
@@ -83,7 +85,7 @@ namespace HymnLibrary.Models
         public string text { get; set; }
         public string time { get; set; }
         public string tune { get; set; }
-        public object verse { get; set; }
+        public string verse { get; set; }
     }
 
 
@@ -92,7 +94,7 @@ namespace HymnLibrary.Models
     {
         [JsonIgnore]
         [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        public int id { get; set; }
         public string _id { get; set; }
         public string comment { get; set; }
         public string youtube_link { get; set; }
@@ -101,8 +103,23 @@ namespace HymnLibrary.Models
     {
         [JsonIgnore]
         [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        public int id { get; set; }
         public string tune_id { get; set; }
         public byte[] tune { get; set; }
+    }
+
+
+
+    [Table("hymn_tune")]
+    public class HymnTune
+    {
+        [JsonIgnore]
+        [PrimaryKey, AutoIncrement]
+        public int id { get; set; } = 0;
+        [JsonProperty("hymnid")]
+        public string unique_id { get; set; }
+        [JsonProperty("link")]
+        public string youtube_link { get; set; }
+
     }
 }
