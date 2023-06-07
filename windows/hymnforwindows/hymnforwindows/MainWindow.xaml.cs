@@ -54,5 +54,11 @@ namespace hymnforwindows
         {
 
         }
+
+        private void autoSearchBox_ItemSelected(object sender, HymnLibrary.Models.Hymn e)
+        {
+            headrTxt.Text = e._id;
+            this.hymnContent.SetHymn(e);
+        }
     }
 }

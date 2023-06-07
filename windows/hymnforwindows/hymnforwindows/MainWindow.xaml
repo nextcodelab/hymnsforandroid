@@ -148,6 +148,7 @@
                             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                                 <controls:SearchBoxControl
                                     x:Name="autoSearchBox"
+                                    ItemSelected="autoSearchBox_ItemSelected"
                                     HorizontalAlignment="Right"
                                     HorizontalContentAlignment="Right" />
                                 <Button
@@ -168,7 +169,7 @@
 
 
                         <Grid x:Name="contentGrid">
-                            <controls:HymnContentControl x:Name="hymnContent" />
+                            <controls:HymnContentControl  x:Name="hymnContent" />
                         </Grid>
 
                         <materialDesign:Snackbar

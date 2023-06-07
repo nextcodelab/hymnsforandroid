@@ -99,6 +99,7 @@ namespace HymnLibrary.Models
         public string comment { get; set; }
         public string youtube_link { get; set; }
     }
+    [Table("midi")]
     public class Midi
     {
         [JsonIgnore]
@@ -122,4 +123,5 @@ namespace HymnLibrary.Models
         public string youtube_link { get; set; }
 
     }
+
 }

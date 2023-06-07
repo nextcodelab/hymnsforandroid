@@ -29,8 +29,12 @@ namespace hymnforwindows.Controls
         }
         public void SetHymn(object hymnal)
         {
-            if(hymnal is Hymn hymn)
+            this.stanzaPanel.Children.Clear();
+            if (hymnal is Hymn hymn)
             {
+                HymnInfoCard hymnInfoCard = new HymnInfoCard();
+                hymnInfoCard.LoadInfo(hymn);
+                this.stanzaPanel.Children.Add(hymnInfoCard);
                 var stanzas = HymnalManager.GetHymnStanzaById(hymn._id);
                 foreach(var stanza in stanzas)
                 {
@@ -38,6 +42,10 @@ namespace hymnforwindows.Controls
                     stanzaCardControl.SetStanza(stanza);
                     this.stanzaPanel.Children.Add(stanzaCardControl);
                 }
+                FooterInfoCard footerInfoCard = new FooterInfoCard();
+                footerInfoCard.LoadInfo(hymn);
+                this.stanzaPanel.Children.Add(footerInfoCard);
+
             }
         }
     }

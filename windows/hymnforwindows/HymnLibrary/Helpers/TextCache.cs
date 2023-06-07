@@ -9,7 +9,7 @@ namespace HymnLibrary.Helpers
 {
     public class TextCache
     {
-        const string TEXTCACHE = "txtcaches";
+        const string TEXTCACHE = "datacaches";
         
         static string _path = Path.Combine(DatabaseDirectory.Dir, TEXTCACHE);
         static string Init()

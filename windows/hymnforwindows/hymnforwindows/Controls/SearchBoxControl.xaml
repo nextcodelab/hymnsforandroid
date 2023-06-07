@@ -6,8 +6,18 @@
     xmlns:local="clr-namespace:hymnforwindows.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="450"
+    xmlns:converters="clr-namespace:hymnforwindows.Converters"
     d:DesignWidth="800"
     mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style x:Key="TextBlockResultStyle" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+        </Style>
+        <converters:HymnEmptyTextConverter x:Key="HymnEmptyTextConverter" />
+        <converters:HymnToLanguageConverter x:Key="HymnToLanguageConverter" />
+    </UserControl.Resources>
     <Grid>
         <StackPanel VerticalAlignment="Center" Orientation="Vertical">
 
@@ -21,7 +31,7 @@
 
 
                 <Grid>
-                    
+
                     <TextBox
                         x:Name="autoTextBox"
                         MinWidth="150"
@@ -35,14 +45,14 @@
                         FontSize="18"
                         Foreground="Black"
                         TextChanged="AutoTextBox_TextChanged" />
-                    <TextBlock
+                    <!--<TextBlock
                         Margin="8,0,8,0"
                         VerticalAlignment="Center"
                         FontSize="16"
                         FontWeight="SemiBold"
                         Foreground="Gray"
                         IsHitTestVisible="False"
-                        Text="Search hymns" />
+                        Text="Search hymns" />-->
                 </Grid>
             </Border>
 
@@ -56,11 +66,36 @@
                 StaysOpen="False"
                 Visibility="Collapsed">
 
-                <ListBox
+                <ListView
+                    SelectionMode="Single"
+                    
                     x:Name="autoList"
                     MinWidth="{Binding ElementName=autoTextBox, Path=MinWidth}"
                     SelectionChanged="AutoList_SelectionChanged"
-                    Visibility="Collapsed" />
+                    Visibility="Collapsed">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel x:Name="panelHymn">
+                                <TextBlock
+                                    x:Name="cTxt"
+                                    FontWeight="ExtraBlack"
+                                    Foreground="Goldenrod"
+                                    Text="{Binding _id}" />
+                                <TextBlock Text="{Binding ElementName=cTxt,Path=DataContext, Converter={StaticResource HymnEmptyTextConverter}}" />
+                                <TextBlock
+                                    FontStyle="Italic"
+                                    Opacity="0.6"
+                                    Text="{Binding ElementName=cTxt,Path=DataContext, Converter={StaticResource HymnToLanguageConverter}}" />
+                                <Separator HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
             </Popup>
         </StackPanel>
     </Grid>

@@ -38,12 +38,18 @@ namespace HymnLibrary
         {
             return new SQLite.SQLiteConnection(SQLiteFilePath);
         }
-        public static async Task<List<object>> GetQuerySearchAsync(string query, int limit = 40)
+        public static async Task<List<Hymn>> GetQuerySearchAsync(string query, int limit = 40)
         {
-            List<object> listItems = new List<object>();
+
             List<Hymn> list = new List<Hymn>();
             if (string.IsNullOrEmpty(query))
-                return listItems;
+                return list;
+            var noText = GetNumbers(query);
+            int no = 0;
+            if (!string.IsNullOrEmpty(noText))
+            {
+                no = Int32.Parse(noText.Trim());
+            }
             while (processing)
             {
                 await Task.Delay(500);
@@ -53,18 +59,13 @@ namespace HymnLibrary
             using (var session = new SQLite.SQLiteConnection(SQLiteFilePath))
             {
 
-                try
-                {
-                    list = session.Table<Hymn>().Where(p => p.no.ToString().ToLower().Contains(query)
+                list = session.Table<Hymn>().Where(p => p.no == no
                 | p._id.ToLower().Contains(query)
                 | p.hymn_group.ToLower().Contains(query)
                 | p.first_stanza_line.ToLower().Contains(query)
                 | p.sub_category.ToLower().Contains(query)
                 | p.first_stanza_line.ToLower().Contains(query)
                 | p.main_category.ToLower().Contains(query)).Take(limit).ToList();
-
-                }
-                catch { }
                 if (list.Count == 0)
                 {
                     var stanzas = session.Table<Stanza>().Where(p => p.text.ToLower().Contains(query)).ToList();
@@ -75,10 +76,10 @@ namespace HymnLibrary
                         list.Add(hymn);
                     }
                 }
-                listItems.AddRange(list);
+
             }
-           
-            return listItems;
+
+            return list;
         }
         public static Hymn GetHymnById(string hymnalId)
         {
@@ -446,7 +447,7 @@ namespace HymnLibrary
         }
         public static string AlignStanza(string stanza)
         {
-            return stanza;
+            return stanza.Replace("<br/>", "\n");
         }
     }
 

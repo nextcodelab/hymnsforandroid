@@ -1,0 +1,55 @@
+﻿<UserControl
+    x:Class="hymnforwindows.Controls.HymnInfoCard"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:hymnforwindows.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style x:Key="TextBlockHeadersStyle" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="23" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel>
+            <StackPanel Height="20" />
+            <TextBlock x:Name="maincategoryText" Style="{StaticResource TextBlockHeadersStyle}">
+                <Run>Main:</Run>
+                <Run Text="{Binding main_category}" />
+            </TextBlock>
+            <TextBlock x:Name="subcategoryText" Style="{StaticResource TextBlockHeadersStyle}">
+                <Run>Title:</Run>
+                <Run Text="{Binding sub_category}" />
+            </TextBlock>
+            <TextBlock x:Name="meterText" Style="{StaticResource TextBlockHeadersStyle}">
+                <Run>Meter:</Run>
+                <Run Text="{Binding meter}" />
+            </TextBlock>
+            <TextBlock x:Name="timeText" Style="{StaticResource TextBlockHeadersStyle}">
+                <Run>Time:</Run>
+                <Run Text="{Binding time}" />
+                <Run Text=" - " />
+                <Run Text="{Binding key}" />
+            </TextBlock>
+            <TextBlock
+                x:Name="relatedText"
+                MaxWidth="500"
+                HorizontalAlignment="Left"
+                Style="{StaticResource TextBlockHeadersStyle}">
+                <Run>Related:</Run>
+                <Run Text="{Binding related}" />
+            </TextBlock>
+            <TextBlock x:Name="numberText" Style="{StaticResource TextBlockHeadersStyle}">
+                <Run>Number:</Run>
+                <Run Text="{Binding _id}" />
+            </TextBlock>
+            <StackPanel Height="30" />
+        </StackPanel>
+    </Grid>
+</UserControl>

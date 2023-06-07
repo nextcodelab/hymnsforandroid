@@ -7,7 +7,13 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Controls\FooterInfoCard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\HymnContentControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\HymnInfoCard.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Controls\SearchBoxControl.xaml.cs">
@@ -18,7 +24,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Controls\FooterInfoCard.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Controls\HymnContentControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\HymnInfoCard.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\SearchBoxControl.xaml">

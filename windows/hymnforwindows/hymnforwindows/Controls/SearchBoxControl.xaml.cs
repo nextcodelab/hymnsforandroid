@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HymnLibrary;
+using HymnLibrary.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +28,7 @@ namespace hymnforwindows.Controls
         public SearchBoxControl()
         {
             InitializeComponent();
+            
         }
         #region Protected / Public properties.  
 
@@ -45,10 +48,12 @@ namespace hymnforwindows.Controls
         /// <summary>  
         ///  Open Auto Suggestion box method  
         /// </summary>  
-        private void OpenAutoSuggestionBox()
+        private async void OpenAutoSuggestionBox()
         {
             try
             {
+                var items = await HymnalManager.GetQuerySearchAsync(this.autoTextBox.Text);
+                this.autoList.ItemsSource = items;
                 // Enable.  
                 this.autoListPopup.Visibility = Visibility.Visible;
                 this.autoListPopup.IsOpen = true;
@@ -150,7 +155,7 @@ namespace hymnforwindows.Controls
                 this.CloseAutoSuggestionBox();
 
                 // Settings.  
-                this.autoTextBox.Text = this.autoList.SelectedItem.ToString();
+                
                 this.autoList.SelectedIndex = -1;
             }
             catch (Exception ex)
@@ -160,7 +165,17 @@ namespace hymnforwindows.Controls
                 Console.Write(ex);
             }
         }
-        #endregion  
-
+        #endregion
+        public event EventHandler<Hymn> ItemSelected;
+        private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var item = sender as ListViewItem;
+            if (item != null && item.Content is Hymn hymn)
+            {
+                ItemSelected?.Invoke(this, hymn);
+                this.autoTextBox.Text = hymn._id;
+                //Do your stuff
+            }
+        }
     }
 }
