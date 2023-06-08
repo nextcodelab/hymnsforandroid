@@ -1,8 +1,11 @@
 # hymnsforandroid
 # Download APK
 [Download HYMN for Android - GUITAR](https://github.com/nextcodelab/hymnsforandroid/raw/master/app/android-apps/HymnsForAndroid-Guitar.apk)
-
 [Download HYMN for Android - PIANO](https://github.com/nextcodelab/hymnsforandroid/raw/master/app/android-apps/HymnsForAndroid-Piano.apk)
+
+# Download for Windows
+[Download HYMN for Windows](https://github.com/nextcodelab/hymnsforandroid/raw/master/windows/hymnforwindows/hymnforwindows/hymnforwindows.exe)
+
 
 ![Screen](https://github.com/nextcodelab/hymnsforandroid/blob/master/app/images/screen1.jpg?raw=true)
 ![Screen](https://github.com/nextcodelab/hymnsforandroid/blob/master/app/images/screen3.jpg?raw=true)
