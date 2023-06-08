@@ -7,12 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "hymnforwindows", "hymnforwi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HymnLibrary", "HymnLibrary\HymnLibrary.csproj", "{423EE9B0-470B-4EC7-B027-F8A4F1524ECC}"
 EndProject
-Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "HymnIntaller", "HymnIntaller\HymnIntaller.wapproj", "{D87C65AD-485D-4162-847B-0597134059D7}"
+Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "HymnIntaller.MSI", "HymnIntaller\HymnIntaller.MSI.wapproj", "{D87C65AD-485D-4162-847B-0597134059D7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installers", "Installers", "{9CCA18FE-A5AF-4407-8D94-8EC8EA1C7067}"
-	ProjectSection(SolutionItems) = preProject
-		HymnIntaller\AppPackages\HymnIntaller.appinstaller = HymnIntaller\AppPackages\HymnIntaller.appinstaller
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Installers", "Installers\Installers.csproj", "{33515841-6890-463B-828F-67EBDE028711}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -98,6 +95,26 @@ Global
 		{D87C65AD-485D-4162-847B-0597134059D7}.Release|x86.ActiveCfg = Release|x86
 		{D87C65AD-485D-4162-847B-0597134059D7}.Release|x86.Build.0 = Release|x86
 		{D87C65AD-485D-4162-847B-0597134059D7}.Release|x86.Deploy.0 = Release|x86
+		{33515841-6890-463B-828F-67EBDE028711}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33515841-6890-463B-828F-67EBDE028711}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33515841-6890-463B-828F-67EBDE028711}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{33515841-6890-463B-828F-67EBDE028711}.Debug|ARM.Build.0 = Debug|Any CPU
+		{33515841-6890-463B-828F-67EBDE028711}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{33515841-6890-463B-828F-67EBDE028711}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{33515841-6890-463B-828F-67EBDE028711}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{33515841-6890-463B-828F-67EBDE028711}.Debug|x64.Build.0 = Debug|Any CPU
+		{33515841-6890-463B-828F-67EBDE028711}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{33515841-6890-463B-828F-67EBDE028711}.Debug|x86.Build.0 = Debug|Any CPU
+		{33515841-6890-463B-828F-67EBDE028711}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33515841-6890-463B-828F-67EBDE028711}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33515841-6890-463B-828F-67EBDE028711}.Release|ARM.ActiveCfg = Release|Any CPU
+		{33515841-6890-463B-828F-67EBDE028711}.Release|ARM.Build.0 = Release|Any CPU
+		{33515841-6890-463B-828F-67EBDE028711}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{33515841-6890-463B-828F-67EBDE028711}.Release|ARM64.Build.0 = Release|Any CPU
+		{33515841-6890-463B-828F-67EBDE028711}.Release|x64.ActiveCfg = Release|Any CPU
+		{33515841-6890-463B-828F-67EBDE028711}.Release|x64.Build.0 = Release|Any CPU
+		{33515841-6890-463B-828F-67EBDE028711}.Release|x86.ActiveCfg = Release|Any CPU
+		{33515841-6890-463B-828F-67EBDE028711}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
