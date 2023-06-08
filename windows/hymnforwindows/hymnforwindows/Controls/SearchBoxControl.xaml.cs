@@ -94,7 +94,7 @@ namespace hymnforwindows.Controls
         #endregion
 
         #region Auto Text Box text changed the method  
-
+        bool processing = false;
         /// <summary>  
         ///  Auto Text Box text changed method.  
         /// </summary>  
@@ -102,6 +102,9 @@ namespace hymnforwindows.Controls
         /// <param name="e">Event parameter</param>  
         private void AutoTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (processing)
+                return;
+            processing = true;
             try
             {
                 // Verification.  
@@ -125,7 +128,13 @@ namespace hymnforwindows.Controls
                 // Info.  
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 Console.Write(ex);
+                processing = false;
             }
+            finally
+            {
+                processing = false;
+            }
+            processing = false;
         }
 
         #endregion

@@ -314,7 +314,7 @@ namespace HymnLibrary
         {
             return new string(input.Where(c => char.IsDigit(c)).ToArray());
         }
-        private static string GetLetters(string input)
+        public static string GetLetters(string input)
         {
             return new string(input.Where(c => !char.IsDigit(c)).ToArray());
         }

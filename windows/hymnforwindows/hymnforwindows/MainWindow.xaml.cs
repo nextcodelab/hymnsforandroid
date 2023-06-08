@@ -1,4 +1,5 @@
 ﻿using HymnLibrary;
+using HymnLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,8 +32,7 @@ namespace hymnforwindows
         {
             HymnalManager.InitData();
             var hymn = HymnalManager.GetFirstHymn();
-            this.headrTxt.Text = hymn._id;
-            hymnContent.SetHymn(hymn);
+            SetHymn(hymn);
         }
 
         private void MenuOpen_Click(object sender, RoutedEventArgs e)
@@ -57,8 +57,22 @@ namespace hymnforwindows
 
         private void autoSearchBox_ItemSelected(object sender, HymnLibrary.Models.Hymn e)
         {
+            SetHymn(e);
+        }
+        void SetHymn(HymnLibrary.Models.Hymn e)
+        {
             headrTxt.Text = e._id;
             this.hymnContent.SetHymn(e);
+            this.itemsListBox.ItemsSource = HymnalManager.GetHymnsByNumber(e.no);
+        }
+
+        private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var item = sender as ListBoxItem;
+            if (item != null && item.Content is Hymn hymn)
+            {
+                SetHymn(hymn);
+            }
         }
     }
 }
