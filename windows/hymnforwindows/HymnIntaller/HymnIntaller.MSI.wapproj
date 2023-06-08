@@ -58,12 +58,12 @@
     <NoWarn>$(NoWarn);NU1702</NoWarn>
     <EntryPointProjectUniqueName>..\hymnforwindows\hymnforwindows.csproj</EntryPointProjectUniqueName>
     <GenerateAppInstallerFile>True</GenerateAppInstallerFile>
-    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <AppxBundlePlatforms>x86</AppxBundlePlatforms>
     <AppInstallerUri>C:\Users\Robel\source\repos\hymnsforandroid\windows\hymnforwindows\Installers</AppInstallerUri>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-    <PackageCertificateThumbprint>3A49A04B14BB807A9343716651B53B37D2ABF7EB</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>0F82A9E3DB518517DB0715271542256BFBD6DE26</PackageCertificateThumbprint>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <GenerateTemporaryStoreCertificate>True</GenerateTemporaryStoreCertificate>
     <AppxPackageDir>C:\Users\Robel\source\repos\hymnsforandroid\windows\hymnforwindows\Installers\</AppxPackageDir>
@@ -106,6 +106,7 @@
   <ItemGroup>
     <None Include="Package.StoreAssociation.xml" />
     <None Include="HymnIntaller_TemporaryKey.pfx" />
+    <None Include="HymnIntaller.MSI_TemporaryKey.pfx" />
     <Content Include="Images\SplashScreen.scale-200.png" />
     <Content Include="Images\LockScreenLogo.scale-200.png" />
     <Content Include="Images\Square150x150Logo.scale-200.png" />
