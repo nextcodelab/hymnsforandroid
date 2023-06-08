@@ -63,7 +63,7 @@
     <AppxBundlePlatforms>x86</AppxBundlePlatforms>
     <AppInstallerUri>C:\Users\Robel\source\repos\hymnsforandroid\windows\hymnforwindows\Installers</AppInstallerUri>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-    <PackageCertificateThumbprint>41B7334C28E8137EB1900B0A238458D045AB9CA4</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>0BA9BCCC218E4E7340A204CAC202E9103CC3B4C6</PackageCertificateThumbprint>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <GenerateTemporaryStoreCertificate>True</GenerateTemporaryStoreCertificate>
     <AppxPackageDir>C:\Users\Robel\source\repos\hymnsforandroid\windows\hymnforwindows\Installers\</AppxPackageDir>
@@ -104,7 +104,6 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <None Include="HymnIntaller.MSI_TemporaryKey.pfx" />
     <Content Include="Images\SplashScreen.scale-200.png" />
     <Content Include="Images\LockScreenLogo.scale-200.png" />
     <Content Include="Images\Square150x150Logo.scale-200.png" />

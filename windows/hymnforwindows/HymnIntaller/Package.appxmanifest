@@ -8,7 +8,7 @@
 
   <Identity
     Name="HymnDesktop"
-    Publisher="CN=Next"
+    Publisher="CN=Robel"
     Version="1.0.9.0" />
 
   <Properties>
@@ -31,7 +31,7 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="AppBuilderDesktop"
+        DisplayName="Hymn"
         Description="HymnIntaller"
         BackgroundColor="transparent"
         Square150x150Logo="Images\Square150x150Logo.png"
