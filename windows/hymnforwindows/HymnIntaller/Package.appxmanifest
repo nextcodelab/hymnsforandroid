@@ -7,13 +7,13 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="46614NiceView.AppBuilderDesktop"
-    Publisher="CN=Robel"
+    Name="HymnDesktop"
+    Publisher="CN=Next"
     Version="1.0.9.0" />
 
   <Properties>
-    <DisplayName>AppBuilderDesktop</DisplayName>
-    <PublisherDisplayName>NxeCcde24 Labs</PublisherDisplayName>
+    <DisplayName>Hymn</DisplayName>
+    <PublisherDisplayName>Next</PublisherDisplayName>
     <Logo>Images\StoreLogo.png</Logo>
   </Properties>
 
