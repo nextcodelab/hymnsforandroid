@@ -6,6 +6,8 @@ using Newtonsoft.Json;
 using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -449,6 +451,91 @@ namespace HymnLibrary
         {
             return stanza.Replace("<br/>", "\n");
         }
-    }
+        public static ColorBytes GetColorBytes(string code, bool border = false)
+        {
+            ColorBytes colorBytes = new ColorBytes();
+            colorBytes.BorderColor = Color.FromArgb(0x3D, 0x57, 0x7A);
+            colorBytes.BackgroundColor = Color.FromArgb(0xB0, 0xBE, 0xC5);
+            code = code.ToLower();
+            Debug.WriteLine(code);
+            switch (code)
+            {
+                case "e":
+                    colorBytes.BorderColor = Color.FromArgb(0x3D, 0x57, 0x7A);
+                    colorBytes.BackgroundColor = Color.FromArgb(0xB0, 0xBE, 0xC5);
+                    break;
+                case "c":
+                    colorBytes.BorderColor = Color.FromArgb(0x66, 0x99, 0x00);
+                    colorBytes.BackgroundColor = Color.FromArgb(0xA5, 0xD6, 0xA7);
+                    break;
+                case "cs":
+                    colorBytes.BorderColor = Color.FromArgb(0x99, 0x33, 0xCC);
+                    colorBytes.BackgroundColor = Color.FromArgb(0xCE, 0x93, 0xD8);
+                    break;
+                case "z":
+                    colorBytes.BorderColor = Color.FromArgb(0x66, 0x99, 0x00);
+                    colorBytes.BackgroundColor = Color.FromArgb(0xA5, 0xD6, 0xA7);
+                    break;
+                case "zs":
+                    colorBytes.BorderColor = Color.FromArgb(0x99, 0x33, 0xCC);
+                    colorBytes.BackgroundColor = Color.FromArgb(0xCE, 0x93, 0xD8);
+                    break;
+                case "cb":
+                    colorBytes.BorderColor = Color.FromArgb(0xFF, 0x88, 0x00);
+                    colorBytes.BackgroundColor = Color.FromArgb(0xFF, 0xCC, 0x80);
+                    break;
+                case "t":
+                    colorBytes.BorderColor = Color.FromArgb(0x00, 0x96, 0x88);
+                    colorBytes.BackgroundColor = Color.FromArgb(0x80, 0xCB, 0xC4);
+                    break;
+                case "fr":
+                    colorBytes.BorderColor = Color.FromArgb(0xE9, 0x1E, 0x63);
+                    colorBytes.BackgroundColor = Color.FromArgb(0xF4, 0x8F, 0xB1);
+                    break;
+                case "s":
+                    colorBytes.BorderColor = Color.FromArgb(0x3F, 0x51, 0xB5);
+                    colorBytes.BackgroundColor = Color.FromArgb(0x9F, 0xA8, 0xDA);
+                    break;
+                case "k":
+                    colorBytes.BorderColor = Color.FromArgb(0x79, 0x55, 0x48);
+                    colorBytes.BackgroundColor = Color.FromArgb(0xBC, 0xAA, 0xA4);
+                    break;
+                case "g":
+                    colorBytes.BorderColor = Color.FromArgb(0xFF, 0x57, 0x22);
+                    colorBytes.BackgroundColor = Color.FromArgb(0xFF, 0xAB, 0x91);
+                    break;
+                case "j":
+                    colorBytes.BorderColor = Color.FromArgb(0x8B, 0xC3, 0x4A);
+                    colorBytes.BackgroundColor = Color.FromArgb(0xAE, 0xD5, 0x81);
+                    break;
+                case "i":
+                    colorBytes.BorderColor = Color.FromArgb(0xF4, 0x43, 0x36);
+                    colorBytes.BackgroundColor = Color.FromArgb(0xE5, 0x73, 0x73);
+                    break;
+                case "bf":
+                    colorBytes.BorderColor = Color.FromArgb(0x00, 0x99, 0xCC);
+                    colorBytes.BackgroundColor = Color.FromArgb(0x90, 0xCA, 0xF9);
+                    break;
+                case "ns":
+                    colorBytes.BorderColor = Color.FromArgb(0xCC, 0x00, 0x00);
+                    colorBytes.BackgroundColor = Color.FromArgb(0xEF, 0x9A, 0x9A);
+                    break;
+                case "ch":
+                    colorBytes.BorderColor = Color.FromArgb(0xAF, 0xB4, 0x2B);
+                    colorBytes.BackgroundColor = Color.FromArgb(0xE6, 0xEE, 0x9C);
+                    break;
+                case "f":
+                    colorBytes.BorderColor = Color.FromArgb(0x67, 0x3A, 0xB7);
+                    colorBytes.BackgroundColor = Color.FromArgb(0x95, 0x75, 0xCD);
+                    break;
 
+            }
+            return colorBytes;
+        }
+    }
+    public class ColorBytes
+    {
+        public Color BorderColor { get; set; }
+        public Color BackgroundColor { get; set; }
+    }
 }

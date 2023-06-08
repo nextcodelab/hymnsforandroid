@@ -43,6 +43,8 @@
             <converters:HymnEmptyTextConverter x:Key="HymnEmptyTextConverter" />
             <converters:HymnToLanguageConverter x:Key="HymnToLanguageConverter" />
             <converters:HymnToLanguageCodeConverter x:Key="HymnToLanguageCodeConverter" />
+            <converters:HymnToLanguageColorConverter x:Key="HymnToLanguageColorConverter" />
+            <converters:HymnToLanguageBorderColorConverter x:Key="HymnToLanguageBorderColorConverter" />
         </ResourceDictionary>
 
     </Window.Resources>
@@ -85,7 +87,9 @@
                                         <Border
                                             Width="40"
                                             Height="40"
-                                            Background="Orange"
+                                            BorderThickness="3"
+                                            BorderBrush="{Binding _id, Converter={StaticResource HymnToLanguageBorderColorConverter}}"
+                                            Background="{Binding _id, Converter={StaticResource HymnToLanguageColorConverter}}"
                                             CornerRadius="8">
                                             <TextBlock
                                                 x:Name="cTxt"
