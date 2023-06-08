@@ -28,7 +28,6 @@
                 CornerRadius="4">
                 <Grid>
                     <TextBox
-                        CaretBrush="{Binding ElementName=autoTextBox, Path=Foreground}"
                         x:Name="autoTextBox"
                         MinWidth="200"
                         Padding="8,8,8,8"
@@ -39,8 +38,10 @@
                         materialDesign:HintAssist.Hint="Search"
                         materialDesign:TextFieldAssist.DecorationVisibility="Visible"
                         materialDesign:TextFieldAssist.HasClearButton="True"
+                        CaretBrush="{Binding ElementName=autoTextBox, Path=Foreground}"
                         DockPanel.Dock="Top"
                         FontWeight="Bold"
+                        Foreground="White"
                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
                         TextChanged="AutoTextBox_TextChanged" />
 
@@ -54,6 +55,7 @@
                 Width="{Binding ElementName=autoTextBox, Path=Width}"
                 MinWidth="{Binding ElementName=autoTextBox, Path=MinWidth}"
                 MinHeight="100"
+                MaxHeight="600"
                 Placement="Bottom"
                 StaysOpen="False"
                 Visibility="Collapsed">
@@ -61,6 +63,7 @@
                 <ListView
                     x:Name="autoList"
                     MinWidth="{Binding ElementName=autoTextBox, Path=MinWidth}"
+                    Background="AliceBlue"
                     SelectionChanged="AutoList_SelectionChanged"
                     SelectionMode="Single"
                     Visibility="Collapsed">
@@ -69,15 +72,17 @@
                             <StackPanel x:Name="panelHymn">
                                 <TextBlock
                                     x:Name="cTxt"
+                                    FontSize="16"
                                     FontWeight="ExtraBlack"
                                     Foreground="Goldenrod"
                                     Text="{Binding _id}" />
-                                <TextBlock Text="{Binding ElementName=cTxt, Path=DataContext, Converter={StaticResource HymnEmptyTextConverter}}" />
+                                <TextBlock FontSize="15" Text="{Binding ElementName=cTxt, Path=DataContext, Converter={StaticResource HymnEmptyTextConverter}}" />
                                 <TextBlock
+                                    FontSize="15"
                                     FontStyle="Italic"
                                     Opacity="0.6"
                                     Text="{Binding ElementName=cTxt, Path=DataContext, Converter={StaticResource HymnToLanguageConverter}}" />
-                                <Separator HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" />
+                                <Separator Opacity="0.4" MinWidth="{Binding ElementName=autoTextBox, Path=MinWidth}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" />
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>

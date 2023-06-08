@@ -124,6 +124,7 @@
                 <DockPanel>
                     <materialDesign:ColorZone
                         Padding="5"
+                       x:Name="colorZone"
                         materialDesign:ElevationAssist.Elevation="Dp4"
                         DockPanel.Dock="Top"
                         Mode="PrimaryMid">
@@ -167,7 +168,7 @@
 
                                     <Separator />
 
-                                    <Button Content="Linl" />
+                                    <Button Content="Link" />
                                 </StackPanel>
                             </materialDesign:PopupBox>
 

@@ -23,6 +23,8 @@ namespace hymnforwindows
     /// </summary>
     public partial class MainWindow : Window
     {
+        public MaterialDesignThemes.Wpf.BundledTheme BundledTheme { get; set; }
+        public ColorBytes ColorByte { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -31,6 +33,13 @@ namespace hymnforwindows
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            var resources = App.Current.Resources;
+            var bundle = resources.MergedDictionaries[0];
+            if (bundle is MaterialDesignThemes.Wpf.BundledTheme style)
+            {
+                BundledTheme = style;
+                //BundledTheme.PrimaryColor = MaterialDesignColors.PrimaryColor.Grey;
+            }
             HymnalManager.InitData();
             var hymn = HymnalManager.GetFirstHymn();
             var data = TextCache.GetCache("currenthymn");
@@ -39,6 +48,7 @@ namespace hymnforwindows
                 hymn = HymnalManager.GetHymnById(data.Value);
             }
             SetHymn(hymn);
+            
         }
 
         private void MenuOpen_Click(object sender, RoutedEventArgs e)
@@ -71,6 +81,15 @@ namespace hymnforwindows
             this.hymnContent.SetHymn(e);
             this.itemsListBox.ItemsSource = HymnalManager.GetHymnsByNumber(e.no);
             TextCache.SaveCache(new DataCache() { UniqueId = "currenthymn", Value = e._id });
+           
+            NavDrawer.IsLeftDrawerOpen = false;
+            UpdateColor(e);
+        }
+        void UpdateColor(Hymn e)
+        {
+            ColorByte = HymnalManager.GetColorBytes(HymnalManager.GetLetters(e._id));
+            this.colorZone.Background = new SolidColorBrush(Color.FromRgb(ColorByte.BorderColor.R, ColorByte.BorderColor.G, ColorByte.BorderColor.B));
+            
         }
 
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

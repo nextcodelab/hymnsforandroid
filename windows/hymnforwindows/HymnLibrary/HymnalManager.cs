@@ -13,6 +13,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace HymnLibrary
 {
@@ -227,6 +228,48 @@ namespace HymnLibrary
             }
             return stanzas;
         }
+        void RepeatedChorusHtml(Hymn hymn, List<Stanza> stanzas_base)
+        {
+            string chorusText = "";
+            var text = new StringBuilder();
+            foreach (Stanza stanza in stanzas_base)
+            {
+               
+                if (stanza.no.Equals("chorus"))
+                {
+                    if (!string.IsNullOrEmpty(stanza.note))
+                        text.Append("<i>@@(" + stanza.note + ")@@</i>");
+                    chorusText = "<i>@@" + stanza.text + "@@</i>";
+                    text.Append(chorusText);
+                   
+                    text = new StringBuilder();
+                }
+                else if (stanza.no.Contains("note"))
+                {
+                    // notes do not have their own lyric view unlike normal stanzas and choruses
+                    text.Append("<i>" + stanza.text + "</i><br/>");
+                }
+
+                else
+                {
+                    // append stanza
+                    text.Append("<b>##" + stanza.no + "##</b><br/>");
+                    text.Append(stanza.text);
+                   
+                    text = new StringBuilder();
+
+
+                    // append chorus after every stanza
+                    var chorusCount = stanzas_base.Where(p => p.no == "chorus").Count();
+                    if (chorusCount == 1 && !string.IsNullOrEmpty(chorusText))
+                    {
+                        
+                        text = new StringBuilder();
+                    }
+                }
+            }
+        }
+        
         public static string CreateHtmlHeader(Hymn hymn)
         {
             //onclick=\"window.external.notify(payload.value)\"
@@ -451,7 +494,7 @@ namespace HymnLibrary
         {
             return stanza.Replace("<br/>", "\n");
         }
-        public static ColorBytes GetColorBytes(string code, bool border = false)
+        public static ColorBytes GetColorBytes(string code)
         {
             ColorBytes colorBytes = new ColorBytes();
             colorBytes.BorderColor = Color.FromArgb(0x3D, 0x57, 0x7A);
