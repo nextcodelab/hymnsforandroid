@@ -1,4 +1,5 @@
 ﻿using HymnLibrary;
+using HymnLibrary.Helpers;
 using HymnLibrary.Models;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,11 @@ namespace hymnforwindows
         {
             HymnalManager.InitData();
             var hymn = HymnalManager.GetFirstHymn();
+            var data = TextCache.GetCache("currenthymn");
+            if (data != null)
+            {
+                hymn = HymnalManager.GetHymnById(data.Value);
+            }
             SetHymn(hymn);
         }
 
@@ -64,6 +70,7 @@ namespace hymnforwindows
             headrTxt.Text = e._id;
             this.hymnContent.SetHymn(e);
             this.itemsListBox.ItemsSource = HymnalManager.GetHymnsByNumber(e.no);
+            TextCache.SaveCache(new DataCache() { UniqueId = "currenthymn", Value = e._id });
         }
 
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
