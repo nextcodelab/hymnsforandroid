@@ -9,6 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HymnLibrary", "HymnLibrary\
 EndProject
 Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "HymnIntaller", "HymnIntaller\HymnIntaller.wapproj", "{D87C65AD-485D-4162-847B-0597134059D7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installers", "Installers", "{9CCA18FE-A5AF-4407-8D94-8EC8EA1C7067}"
+	ProjectSection(SolutionItems) = preProject
+		HymnIntaller\AppPackages\HymnIntaller.appinstaller = HymnIntaller\AppPackages\HymnIntaller.appinstaller
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

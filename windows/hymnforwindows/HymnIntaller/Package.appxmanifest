@@ -9,7 +9,7 @@
   <Identity
     Name="221af664-6dd1-437b-a997-7ed69f30019f"
     Publisher="CN=Robel"
-    Version="1.0.0.0" />
+    Version="1.0.3.0" />
 
   <Properties>
     <DisplayName>HymnIntaller</DisplayName>

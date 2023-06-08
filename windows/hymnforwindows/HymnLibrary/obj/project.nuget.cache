@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "WUZgJyQy/ZX4UzsCecZcwAgRsGMA5+yG4wBK9xCnJCQx8c2UWyX5nrOfcXXYGfSQb7TGnTNbIeJIZoyqtnfrTA==",
+  "dgSpecHash": "K4GZ8Bwp93bYl8ChrRj7w5iij4MvcsTJsVZMhUvwn3dnGBcSQXDyOz5EZjYnH3GAfWoEsfPfjbbLK7bZ0ljnpg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Robel\\source\\repos\\hymnsforandroid\\windows\\hymnforwindows\\HymnLibrary\\HymnLibrary.csproj",
   "expectedPackageFiles": [
@@ -10,10 +10,7 @@
     "C:\\Users\\Robel\\.nuget\\packages\\sqlitepclraw.core\\2.0.4\\sqlitepclraw.core.2.0.4.nupkg.sha512",
     "C:\\Users\\Robel\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.4\\sqlitepclraw.lib.e_sqlite3.2.0.4.nupkg.sha512",
     "C:\\Users\\Robel\\.nuget\\packages\\sqlitepclraw.provider.dynamic_cdecl\\2.0.4\\sqlitepclraw.provider.dynamic_cdecl.2.0.4.nupkg.sha512",
-    "C:\\Users\\Robel\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
-    "C:\\Users\\Robel\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\6.0.14\\microsoft.netcore.app.runtime.win-x86.6.0.14.nupkg.sha512",
-    "C:\\Users\\Robel\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\6.0.14\\microsoft.windowsdesktop.app.runtime.win-x86.6.0.14.nupkg.sha512",
-    "C:\\Users\\Robel\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\6.0.14\\microsoft.aspnetcore.app.runtime.win-x86.6.0.14.nupkg.sha512"
+    "C:\\Users\\Robel\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
   ],
   "logs": []
 }
