@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Robel\\source\\repos\\hymnsforandroid\\windows\\hymnforwindows\\hymnforwindows\\hymnforwindows.csproj": {}
+    "C:\\Users\\Robel\\AndroidStudioProjects\\hymnsforandroid\\windows\\hymnforwindows\\hymnforwindows\\hymnforwindows.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Robel\\source\\repos\\hymnsforandroid\\windows\\hymnforwindows\\hymnforwindows\\hymnforwindows.csproj": {
+    "C:\\Users\\Robel\\AndroidStudioProjects\\hymnsforandroid\\windows\\hymnforwindows\\hymnforwindows\\hymnforwindows.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Robel\\source\\repos\\hymnsforandroid\\windows\\hymnforwindows\\hymnforwindows\\hymnforwindows.csproj",
+        "projectUniqueName": "C:\\Users\\Robel\\AndroidStudioProjects\\hymnsforandroid\\windows\\hymnforwindows\\hymnforwindows\\hymnforwindows.csproj",
         "projectName": "hymnforwindows",
-        "projectPath": "C:\\Users\\Robel\\source\\repos\\hymnsforandroid\\windows\\hymnforwindows\\hymnforwindows\\hymnforwindows.csproj",
+        "projectPath": "C:\\Users\\Robel\\AndroidStudioProjects\\hymnsforandroid\\windows\\hymnforwindows\\hymnforwindows\\hymnforwindows.csproj",
         "packagesPath": "C:\\Users\\Robel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Robel\\source\\repos\\hymnsforandroid\\windows\\hymnforwindows\\hymnforwindows\\obj\\",
+        "outputPath": "C:\\Users\\Robel\\AndroidStudioProjects\\hymnsforandroid\\windows\\hymnforwindows\\hymnforwindows\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,8 +33,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "C:\\Users\\Robel\\source\\repos\\hymnsforandroid\\windows\\hymnforwindows\\HymnLibrary\\HymnLibrary.csproj": {
-                "projectPath": "C:\\Users\\Robel\\source\\repos\\hymnsforandroid\\windows\\hymnforwindows\\HymnLibrary\\HymnLibrary.csproj"
+              "C:\\Users\\Robel\\AndroidStudioProjects\\hymnsforandroid\\windows\\hymnforwindows\\HymnLibrary\\HymnLibrary.csproj": {
+                "projectPath": "C:\\Users\\Robel\\AndroidStudioProjects\\hymnsforandroid\\windows\\hymnforwindows\\HymnLibrary\\HymnLibrary.csproj"
               }
             }
           }
@@ -97,18 +97,18 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.300-preview.23122.5\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-preview.4.23260.5\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Robel\\source\\repos\\hymnsforandroid\\windows\\hymnforwindows\\HymnLibrary\\HymnLibrary.csproj": {
+    "C:\\Users\\Robel\\AndroidStudioProjects\\hymnsforandroid\\windows\\hymnforwindows\\HymnLibrary\\HymnLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Robel\\source\\repos\\hymnsforandroid\\windows\\hymnforwindows\\HymnLibrary\\HymnLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\Robel\\AndroidStudioProjects\\hymnsforandroid\\windows\\hymnforwindows\\HymnLibrary\\HymnLibrary.csproj",
         "projectName": "HymnLibrary",
-        "projectPath": "C:\\Users\\Robel\\source\\repos\\hymnsforandroid\\windows\\hymnforwindows\\HymnLibrary\\HymnLibrary.csproj",
+        "projectPath": "C:\\Users\\Robel\\AndroidStudioProjects\\hymnsforandroid\\windows\\hymnforwindows\\HymnLibrary\\HymnLibrary.csproj",
         "packagesPath": "C:\\Users\\Robel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Robel\\source\\repos\\hymnsforandroid\\windows\\hymnforwindows\\HymnLibrary\\obj\\",
+        "outputPath": "C:\\Users\\Robel\\AndroidStudioProjects\\hymnsforandroid\\windows\\hymnforwindows\\HymnLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -167,7 +167,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.300-preview.23122.5\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-preview.4.23260.5\\RuntimeIdentifierGraph.json"
         }
       }
     }

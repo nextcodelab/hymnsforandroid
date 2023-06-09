@@ -10,7 +10,7 @@ namespace HymnLibrary
 {
     internal class DatabaseDirectory
     {
-        public static string Dir { get; private set; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
+        public static string Dir { get; private set; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Hymns");
         public static Stream GetEmbeddedResourceStreamAsync(string embeddedResourcePath, Type type)
         {
             //Class name is CommonsExtensions

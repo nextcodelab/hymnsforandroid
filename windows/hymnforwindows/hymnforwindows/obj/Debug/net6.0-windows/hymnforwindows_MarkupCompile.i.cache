@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\Robel\source\repos\hymnsforandroid\windows\hymnforwindows\hymnforwindows\obj\Debug\net6.0-windows\
+C:\Users\Robel\AndroidStudioProjects\hymnsforandroid\windows\hymnforwindows\hymnforwindows\obj\Debug\net6.0-windows\
 hymnforwindows
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\Robel\source\repos\hymnsforandroid\windows\hymnforwindows\hymnforwindows\App.xaml
+C:\Users\Robel\AndroidStudioProjects\hymnsforandroid\windows\hymnforwindows\hymnforwindows\App.xaml
 61866312300
 
 18-1809414969
-217-605704743
+217-1978716279
 Controls\FooterInfoCard.xaml;Controls\HymnContentControl.xaml;Controls\HymnInfoCard.xaml;Controls\SearchBoxControl.xaml;Controls\StanzaCardControl.xaml;MainWindow.xaml;
 
 True

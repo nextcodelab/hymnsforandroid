@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AppInstaller
+	Uri="file:///C:/Users/Robel/source/repos/hymnsforandroid/windows/hymnforwindows/Installers/HymnIntaller.MSI.appinstaller"
+	Version="1.0.9.0" xmlns="http://schemas.microsoft.com/appx/appinstaller/2017/2">
+	<MainBundle
+		Name="46614NiceView.Hymnal"
+		Version="1.0.9.0"
+		Publisher="CN=Robel"
+		Uri="file:///C:/Users/Robel/source/repos/hymnsforandroid/windows/hymnforwindows/Installers/HymnIntaller.MSI_1.0.9.0_Test/HymnIntaller.MSI_1.0.9.0_x86.msixbundle" />
+	<UpdateSettings>
+		<OnLaunch
+			HoursBetweenUpdateChecks="0" />
+	</UpdateSettings>
+</AppInstaller>

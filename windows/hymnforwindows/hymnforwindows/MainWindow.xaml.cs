@@ -31,7 +31,7 @@ namespace hymnforwindows
             this.Loaded += MainWindow_Loaded;
         }
 
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             var resources = App.Current.Resources;
             var bundle = resources.MergedDictionaries[0];
@@ -41,7 +41,7 @@ namespace hymnforwindows
                 //BundledTheme.PrimaryColor = MaterialDesignColors.PrimaryColor.Grey;
             }
             HymnalManager.InitData();
-            var hymn = HymnalManager.GetFirstHymn();
+            var hymn = await HymnalManager.GetFirstHymnAsync();
             var data = TextCache.GetCache("currenthymn");
             if (data != null)
             {

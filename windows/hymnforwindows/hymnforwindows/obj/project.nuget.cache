@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uto6hz1nqmlacO75Xpd58DleWH+WIGtyLiyTBE5RN8fxHjcNpBQqhRapyhlcvNq2mMZKMTpzcQ9nLrE1/qodEw==",
+  "dgSpecHash": "256Gwn7PJlhCC5SIQmNo57ibtmhWt364S2ZxUkM5YTXBqCcYGXrfB9eL0MlVJVcoHJy7Jujf7oPRdwYzn5Uhhg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Robel\\source\\repos\\hymnsforandroid\\windows\\hymnforwindows\\hymnforwindows\\hymnforwindows.csproj",
+  "projectFilePath": "C:\\Users\\Robel\\AndroidStudioProjects\\hymnsforandroid\\windows\\hymnforwindows\\hymnforwindows\\hymnforwindows.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Robel\\.nuget\\packages\\avalonedit\\6.0.1\\avalonedit.6.0.1.nupkg.sha512",
     "C:\\Users\\Robel\\.nuget\\packages\\materialdesigncolors\\2.1.4\\materialdesigncolors.2.1.4.nupkg.sha512",

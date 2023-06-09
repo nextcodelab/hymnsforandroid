@@ -19,6 +19,7 @@ namespace HymnLibrary
 {
     public class HymnalManager
     {
+        //C:\Users\Robel\AppData\Local
         public const string HYMN_FILE = "hymns.sqlite";
         public static string SQLiteFilePath { get; private set; } = Path.Combine(DatabaseDirectory.Dir, HYMN_FILE);
         static bool processing = false;
@@ -27,14 +28,22 @@ namespace HymnLibrary
             if (processing)
                 return;
             processing = true;
-            if (File.Exists(SQLiteFilePath) == false)
+            if(Directory.Exists(DatabaseDirectory.Dir) == false)
             {
-                var input = DatabaseDirectory.GetEmbeddedResourceStreamAsync("Engine.Data.hymns.sqlite", typeof(HymnalManager));
+                Directory.CreateDirectory(DatabaseDirectory.Dir);
+            }
+            var exist = File.Exists(SQLiteFilePath);
+            if (exist == false)
+            {
+                var input = DatabaseDirectory.GetEmbeddedResourceStreamAsync("HymnLibrary.Data.hymns.sqlite", typeof(HymnalManager));
                 using (Stream file = File.Create(SQLiteFilePath))
                 {
                     await input.CopyToAsync(file);
                 }
+               
             }
+            Debug.WriteLine("--------------------------------------------------------------");
+            Debug.WriteLine(DatabaseDirectory.Dir);
             processing = false;
         }
         public static SQLiteConnection GetHymnalConnection()
@@ -100,8 +109,14 @@ namespace HymnLibrary
                 return db.Table<Hymn>().Where(p => p.no == no).ToList();
             }
         }
-        public static Hymn GetFirstHymn()
+        public static async Task<Hymn> GetFirstHymnAsync()
         {
+            while (processing)
+            {
+                InitData();
+                await Task.Delay(1000);
+
+            }
             using (var db = GetHymnalConnection())
             {
                 return db.Table<Hymn>().Where(p => p._id == "E789").FirstOrDefault();

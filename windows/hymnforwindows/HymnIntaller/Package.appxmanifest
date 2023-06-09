@@ -7,13 +7,13 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="HymnDesktop"
-    Publisher="CN=Robel"
+    Name="46614NiceView.Hymnal"
+    Publisher="CN=D2D0D4D7-08C0-4ECC-B90E-098CBD4F6506"
     Version="1.0.9.0" />
 
   <Properties>
-    <DisplayName>Hymn</DisplayName>
-    <PublisherDisplayName>Next</PublisherDisplayName>
+    <DisplayName>Hymnal</DisplayName>
+    <PublisherDisplayName>NxeCcde24 Labs</PublisherDisplayName>
     <Logo>Images\StoreLogo.png</Logo>
   </Properties>
 
@@ -36,7 +36,7 @@
         BackgroundColor="transparent"
         Square150x150Logo="Images\Square150x150Logo.png"
         Square44x44Logo="Images\Square44x44Logo.png">
-        <uap:DefaultTile Wide310x150Logo="Images\Wide310x150Logo.png" />
+        <uap:DefaultTile Wide310x150Logo="Images\Wide310x150Logo.png"  Square71x71Logo="Images\SmallTile.png" Square310x310Logo="Images\LargeTile.png"/>
         <uap:SplashScreen Image="Images\SplashScreen.png" />
       </uap:VisualElements>
     </Application>
