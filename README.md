@@ -5,9 +5,9 @@
 [Download HYMN for Android - PIANO](https://github.com/nextcodelab/hymnsforandroid/raw/master/app/android-apps/HymnsForAndroid-Piano.apk)
 
 # Download for Windows
-[Download HYMN for Windows](https://github.com/nextcodelab/hymnsforandroid/raw/master/windows/hymnforwindows/Installers/HymnIntaller.MSI_1.0.9.0_x86.msixbundle)
+[Download HYMN for Windows](https://github.com/nextcodelab/hymnsforandroid/raw/master/windows/hymnforwindows/Installers/HymnIntaller.MSI_1.0.9.0_Test/HymnIntaller.MSI_1.0.9.0_x86.msixbundle)
 
-[Download Certificate](https://github.com/nextcodelab/hymnsforandroid/raw/master/windows/hymnforwindows/Installers/HymnIntaller.MSI_1.0.9.0_x86.cer)
+[Download Certificate](https://github.com/nextcodelab/hymnsforandroid/raw/master/windows/hymnforwindows/Installers/HymnIntaller.MSI_1.0.9.0_Test/HymnIntaller.MSI_1.0.9.0_x86.cer)
 
 
 ![Screen](https://github.com/nextcodelab/hymnsforandroid/blob/master/app/images/screen1.jpg?raw=true)
