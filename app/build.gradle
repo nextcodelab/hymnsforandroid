@@ -1,6 +1,7 @@
 // Note: please use similar filename for release: HymnsForAndroidv3.3-Piano
-apply plugin: 'com.android.application'
-apply plugin: 'idea'
+plugins {
+    id 'com.android.application'
+}
 
 // you can choose to put either "guitarSvg" or "pianoSvg" depending on the sheet music you want to include
 def svgFolderName = "guitarSvg"
@@ -9,31 +10,24 @@ def hymnAppVersion = "v4.7-Guitar"
 // filename: HymnsForAndroidv4.x-Piano.apk
 
 
-allprojects {
-    repositories {
-        jcenter()
-        maven {
-            url "https://maven.google.com"
-        }
-    }
-}
-
 android {
-    compileSdkVersion 29
-//    buildToolsVersion "28.0.3"
+    namespace 'com.lemuelinchrist.android.hymns'
+    compileSdkVersion 33
 
     defaultConfig {
         applicationId "com.lemuelinchrist.android.hymns"
-        minSdkVersion 15    // Ice cream sandwitch
-        targetSdkVersion 29
+        minSdk 24
+        targetSdk 33
         // increment version code if you want to refresh the database cache of your phone
         versionCode 179
         versionName hymnAppVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         // add the code from below line.
         applicationVariants.all{
@@ -62,19 +56,26 @@ android {
     lintOptions {
         abortOnError false
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'com.google.android.material:material:1.1.0'
-    implementation 'androidx.preference:preference:1.1.0'
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.10.1'
-    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.10.1'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.1'
+    implementation 'androidx.recyclerview:recyclerview:1.3.0'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.preference:preference:1.2.0'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.11.1'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.11.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.1'
     implementation 'com.android.volley:volley:1.2.1'
 }
 

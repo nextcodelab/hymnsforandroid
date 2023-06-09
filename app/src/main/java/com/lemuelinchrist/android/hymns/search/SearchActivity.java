@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.*;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -19,12 +20,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
 import com.google.android.material.tabs.TabLayout;
 import com.lemuelinchrist.android.hymns.HymnGroup;
 import com.lemuelinchrist.android.hymns.R;
 import com.lemuelinchrist.android.hymns.search.fragments.*;
 
-public class SearchActivity extends AppCompatActivity  {
+public class SearchActivity extends AppCompatActivity {
 
     public static final String ENTER_HYMN_NO = "Enter Hymn No.            ";
     public static final String ENTER_LYRIC = "Enter Search Text          ";
@@ -65,7 +67,7 @@ public class SearchActivity extends AppCompatActivity  {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
         // Set Icons
-        for(TabFragment tab:TabFragment.COLLECTION.values()) {
+        for (TabFragment tab : TabFragment.COLLECTION.values()) {
             tabLayout.getTabAt(tab.getSearchTabIndex()).setIcon(tab.getIcon());
 
         }
@@ -106,15 +108,16 @@ public class SearchActivity extends AppCompatActivity  {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                setResult(RESULT_CANCELED, null);
-                finish();
-            case R.id.searchHymns:
-                break;
-            default:
-                return super.onOptionsItemSelected(item);
+        int itemId = item.getItemId();
+        if (itemId == android.R.id.home) {
+            setResult(RESULT_CANCELED, null);
+            finish();
+        } else if (itemId == R.id.searchHymns) {
+
+        } else {
+            return super.onOptionsItemSelected(item);
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -141,11 +144,11 @@ public class SearchActivity extends AppCompatActivity  {
             public boolean onQueryTextSubmit(String query) {
                 Log.d(this.getClass().getSimpleName(), "Submitted text in the index search");
 
-                if (searchBar.getInputType()==InputType.TYPE_CLASS_PHONE) {
-                    createIntentAndExit(selectedHymnGroup+query);
+                if (searchBar.getInputType() == InputType.TYPE_CLASS_PHONE) {
+                    createIntentAndExit(selectedHymnGroup + query);
                 }
 
-                filterList( query);
+                filterList(query);
                 hideKeyboard();
                 return true;
             }
@@ -168,8 +171,8 @@ public class SearchActivity extends AppCompatActivity  {
                     // switch to FirstLine Tab
                     try {
                         mViewPager.setCurrentItem(TabFragment.getInstance(FirstLineTabFragment.class).getSearchTabIndex());
-                    }catch(Exception e) {
-                        Log.d(this.getClass().getName(),"Exception caught!");
+                    } catch (Exception e) {
+                        Log.d(this.getClass().getName(), "Exception caught!");
                     }
 
                 }
@@ -177,8 +180,7 @@ public class SearchActivity extends AppCompatActivity  {
         });
 
 
-
-        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE| WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
         searchBar.clearFocus();
         searchBar.requestFocus();
         showKeyboard();
@@ -229,7 +231,6 @@ public class SearchActivity extends AppCompatActivity  {
     }
 
 
-
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to one of the primary
      * sections of the app.
@@ -269,7 +270,6 @@ public class SearchActivity extends AppCompatActivity  {
         public CharSequence getPageTitle(int position) {
             return TabFragment.COLLECTION.get(position).getTabName();
         }
-
 
 
     }

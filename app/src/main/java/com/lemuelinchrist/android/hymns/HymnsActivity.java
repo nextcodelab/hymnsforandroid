@@ -171,57 +171,49 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
         Log.d(this.getClass().getName(), "Item selected: " + item.getItemId());
 
         // code for drawer:
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                toggleDrawer();
-                break;
-            case R.id.action_index:
-                Intent intent = new Intent(getBaseContext(), SearchActivity.class);
-                intent.putExtra("selectedHymnGroup", selectedHymnGroup);
-                startActivityForResult(intent, SEARCH_REQUEST);
-                ret = true;
-                break;
-            case R.id.action_settings:
-                Intent settingsIntent = new Intent(getBaseContext(), SettingsActivity.class);
-                startActivity(settingsIntent);
-                break;
-            case R.id.action_submit_ty:
-                showSubmitDialog();
-                break;
-            case R.id.hymnal_net:
-                try {
+        int itemId = item.getItemId();
+        if (itemId == android.R.id.home) {
+            toggleDrawer();
+        } else if (itemId == R.id.action_index) {
+            Intent intent = new Intent(getBaseContext(), SearchActivity.class);
+            intent.putExtra("selectedHymnGroup", selectedHymnGroup);
+            startActivityForResult(intent, SEARCH_REQUEST);
+            ret = true;
+        } else if (itemId == R.id.action_settings) {
+            Intent settingsIntent = new Intent(getBaseContext(), SettingsActivity.class);
+            startActivity(settingsIntent);
+        } else if (itemId == R.id.action_submit_ty) {
+            showSubmitDialog();
+        } else if (itemId == R.id.hymnal_net) {
+            try {
 
-                    String number = currentHymnId.replaceAll("[^0-9]", "");
-                    String letter = "h";
-                    if (currentHymnId.startsWith("E")) {
-                        letter = "h";
-                    } else {
-                        String letters = currentHymnId.replaceAll("[^a-zA-Z].*", "");
-                        if (letters.length() > 1) {
-                            letter = letters;
-                        }
+                String number = currentHymnId.replaceAll("[^0-9]", "");
+                String letter = "h";
+                if (currentHymnId.startsWith("E")) {
+                    letter = "h";
+                } else {
+                    String letters = currentHymnId.replaceAll("[^a-zA-Z].*", "");
+                    if (letters.length() > 1) {
+                        letter = letters;
                     }
-                    letter = letter.toLowerCase();
-                    String url = "https://www.hymnal.net/en/hymn/" + letter + "/" + number;
-                    Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                    startActivity(myIntent);
-                } catch (ActivityNotFoundException e) {
-                    Toast.makeText(this, "No application can handle this request."
-                            + " Please install a webbrowser", Toast.LENGTH_LONG).show();
-                    e.printStackTrace();
                 }
-                break;
-            case R.id.refesh_action_menu_ic:
-                NetworkCache.refreshTunes = true;
-                NetworkCache.LoadHymnTunes(this);
-                break;
-
-            case R.id.share_apk_link:
-                ShareAPKLink();
-                break;
-            default:
-                ret = false;
-                Log.w(HymnsActivity.class.getSimpleName(), "Warning!! No Item was selected!!");
+                letter = letter.toLowerCase();
+                String url = "https://www.hymnal.net/en/hymn/" + letter + "/" + number;
+                Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(myIntent);
+            } catch (ActivityNotFoundException e) {
+                Toast.makeText(this, "No application can handle this request."
+                        + " Please install a webbrowser", Toast.LENGTH_LONG).show();
+                e.printStackTrace();
+            }
+        } else if (itemId == R.id.refesh_action_menu_ic) {
+            NetworkCache.refreshTunes = true;
+            NetworkCache.LoadHymnTunes(this);
+        } else if (itemId == R.id.share_apk_link) {
+            ShareAPKLink();
+        } else {
+            ret = false;
+            Log.w(HymnsActivity.class.getSimpleName(), "Warning!! No Item was selected!!");
         }
         return ret;
     }
@@ -295,7 +287,8 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
                 Uri.parse(filePath));
         startActivity(Intent.createChooser(intent, "Share Using"));
     }
-    private void ShareAPKLink(){
+
+    private void ShareAPKLink() {
         String link = "https://github.com/nextcodelab/hymnsforandroid/raw/master/app/android-apps/HymnsForAndroid-Guitar.apk";
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
