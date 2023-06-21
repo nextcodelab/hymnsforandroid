@@ -14,6 +14,8 @@
 ![Screen](https://github.com/nextcodelab/hymnsforandroid/blob/master/app/images/screen3.jpg?raw=true)
 ![Screen](https://github.com/nextcodelab/hymnsforandroid/blob/master/app/images/screen2.jpg?raw=true)](https://www.youtube.com/watch?v=TAyaXdvvbGU).
 
+[![Screen](https://github.com/nextcodelab/hymnsforandroid/blob/master/app/images/screen2.jpg?raw=true)](https://www.youtube.com/watch?v=TAyaXdvvbGU)
+
 
 # Submit youtube link/embed.
 ![Screen](https://github.com/nextcodelab/hymnsforandroid/blob/master/app/images/screen4.jpg?raw=true)
