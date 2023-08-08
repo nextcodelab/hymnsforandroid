@@ -23,7 +23,9 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.lemuelinchrist.android.hymns.HymnGroup;
+import com.lemuelinchrist.android.hymns.HymnsActivity;
 import com.lemuelinchrist.android.hymns.R;
+import com.lemuelinchrist.android.hymns.content.ContentArea;
 import com.lemuelinchrist.android.hymns.search.fragments.*;
 
 public class SearchActivity extends AppCompatActivity {
@@ -190,6 +192,8 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     public void createIntentAndExit(String hymnId) {
+        ContentArea.selectedHymId = hymnId;
+        HymnsActivity.Instance.setLog(hymnId);
         Intent data = new Intent();
         data.setData(Uri.parse(hymnId));
 

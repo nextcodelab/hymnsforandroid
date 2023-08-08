@@ -1,5 +1,7 @@
 package com.lemuelinchrist.android.hymns;
 
+import static com.lemuelinchrist.android.hymns.content.ContentArea.HISTORY_LOGBOOK_FILE;
+
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -34,6 +36,9 @@ import androidx.preference.PreferenceManager;
 import androidx.viewpager.widget.ViewPager;
 
 import com.lemuelinchrist.android.hymns.content.OnLyricVisibleListener;
+import com.lemuelinchrist.android.hymns.dao.HymnsDao;
+import com.lemuelinchrist.android.hymns.entities.Hymn;
+import com.lemuelinchrist.android.hymns.logbook.LogBook;
 import com.lemuelinchrist.android.hymns.search.SearchActivity;
 import com.lemuelinchrist.android.hymns.settings.SettingsActivity;
 import com.lemuelinchrist.android.hymns.style.Theme;
@@ -69,10 +74,13 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
     private boolean preferenceChanged = true;
     private HymnDrawer hymnDrawer;
     private static HymnSwitcher hymnSwitcher;
+    public static HymnsActivity Instance;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Instance  = this;
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         NetworkCache.LoadHymnTunes(this);
@@ -127,6 +135,20 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         setDisplayConfig();
         hymnSwitcher = this;
+    }
+    /**
+     * On older and low-end devices, when searching for a hymn in the SearchActivity,
+     * the app always resumes in the main activity. In this scenario, the hymnId becomes null.
+     * To address this, select the hymn and log it first to ensure that the newly selected hymn is displayed correctly.
+     */
+
+    public void  setLog(String hymnId){
+        HymnsDao hymnsDao = new HymnsDao(this);
+        hymnsDao.open();
+        Hymn hymn = hymnsDao.get(hymnId);
+        hymnsDao.close();
+        LogBook  historyLogBook = new LogBook(this, HISTORY_LOGBOOK_FILE);
+        historyLogBook.log(hymn);
     }
 
     public void UpdateSelection() {
@@ -355,6 +377,7 @@ public class HymnsActivity extends AppCompatActivity implements OnLyricVisibleLi
             e.printStackTrace();
         }
     }
+
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {

@@ -219,12 +219,12 @@ public class HymnBookCollection implements OnLyricVisibleListener {
         @Override
         public Fragment getItem(int position) {
             Log.d(getClass().getSimpleName(), "getItem position: " + position);
-
+            String hymnId = hymnGroup.toString() + hymnNumbers.get(position);
             ContentArea lyric = ContentArea.newInstance(context, theme);
             lyric.setHymnStack(hymnStack);
             lyric.addLyricVisibleListener(context);
             lyric.addLyricVisibleListener(HymnBookCollection.this);
-            lyric.setHymn(hymnGroup.toString() + hymnNumbers.get(position));
+            lyric.setHymn(hymnId);
             currentContentArea = lyric;
 
             return lyric;

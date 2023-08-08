@@ -22,6 +22,7 @@ import com.lemuelinchrist.android.hymns.R;
 import com.lemuelinchrist.android.hymns.content.sheetmusic.SheetMusicButton;
 import com.lemuelinchrist.android.hymns.dao.HymnsDao;
 import com.lemuelinchrist.android.hymns.entities.Hymn;
+import com.lemuelinchrist.android.hymns.logbook.HymnRecord;
 import com.lemuelinchrist.android.hymns.logbook.LogBook;
 import com.lemuelinchrist.android.hymns.style.Theme;
 import com.lemuelinchrist.android.hymns.utils.HymnStack;
@@ -40,7 +41,7 @@ public class ContentArea extends Fragment {
 
     private Context context;
     private Hymn hymn;
-    private static HymnsDao hymnsDao = null;
+    private HymnsDao hymnsDao = null;
     private static float fontSize;
     private SharedPreferences sharedPreferences;
     private LogBook historyLogBook;
@@ -57,6 +58,8 @@ public class ContentArea extends Fragment {
     private CopyButton copyButton;
     private YoutubeButton youtubeButton;
     private SimilarTuneButton similarTuneButton;
+    ViewGroup rootView;
+    NestedScrollView scrollView;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -69,7 +72,7 @@ public class ContentArea extends Fragment {
             theme = Theme.isNightModePreferred(sharedPreferences.getBoolean("nightMode", false));
         }
 
-        ViewGroup rootView = (ViewGroup) inflater.inflate(
+        rootView = (ViewGroup) inflater.inflate(
                 theme.getStyle(), container, false);
 
         if (hymnsDao == null) {
@@ -79,7 +82,7 @@ public class ContentArea extends Fragment {
         fontSize = Float.parseFloat(sharedPreferences.getString("FontSize", "18f"));
 
         // This onTouchListener will solve the problem of the scrollView undesiringly focusing on the lyric portion
-        NestedScrollView scrollView = rootView.findViewById(R.id.jellybeanContentScrollView);
+        scrollView = rootView.findViewById(R.id.jellybeanContentScrollView);
         scrollView.setDescendantFocusability(ViewGroup.FOCUS_BEFORE_DESCENDANTS);
         scrollView.setFocusable(true);
         scrollView.setFocusableInTouchMode(true);
@@ -95,38 +98,46 @@ public class ContentArea extends Fragment {
 
         //Sometimes hymnId can be null when app wakes up from a sleep several hours long. need to retrieve it from history
         if (hymnId == null) {
-            hymnId = historyLogBook.getOrderedRecordList()[0].getHymnId();
+            HymnRecord[] list = historyLogBook.getOrderedRecordList();
+            if (list.length > 0) {
+                hymnId = historyLogBook.getOrderedRecordList()[0].getHymnId();
+                String g = hymnId;
+            }
         }
 
-        hymnsDao.open();
-        hymn = hymnsDao.get(hymnId);
-        hymnsDao.close();
-
-        LyricsArea lyricsArea = new LyricsArea(hymn, this, scrollView);
-
-        if (hymnId != null) {
-            lyricsArea.displayLyrics();
-        }
-
-        buttonContainer = rootView.findViewById(getRid("buttonContainer"));
-        if (buttonContainer != null) {
-            buttonContainer.setCardBackgroundColor(hymn.getHymnGroup().getDayColor());
-        }
-
-        playButton = new PlayButton(hymn, this,
-                (ImageButton) rootView.findViewById(getRid("playButton")));
-        sheetMusicButton = new SheetMusicButton(hymn, this,
-                (ImageButton) rootView.findViewById(getRid("sheetMusicButton")));
-        faveButton = new FaveButton(hymn, this,
-                (ImageButton) rootView.findViewById(getRid("faveButton")));
-        copyButton = new CopyButton(hymn, this,
-                (ImageButton) rootView.findViewById(getRid("copyButton")));
-        youtubeButton = new YoutubeButton(hymn, this,
-                (ImageButton) rootView.findViewById(getRid("youtubePianoButton")));
-        similarTuneButton = new SimilarTuneButton(hymn, this,
-                (ImageButton) rootView.findViewById(getRid("similarTuneButton")));
-        setUpWebview(rootView);
+        setUpViews();
         return rootView;
+    }
+
+    void setUpViews() {
+        if (hymnId != null) {
+            hymnsDao.open();
+            hymn = hymnsDao.get(hymnId);
+            hymnsDao.close();
+
+            LyricsArea lyricsArea = new LyricsArea(hymn, this, scrollView);
+            lyricsArea.displayLyrics();
+
+            buttonContainer = rootView.findViewById(getRid("buttonContainer"));
+            if (buttonContainer != null) {
+                buttonContainer.setCardBackgroundColor(hymn.getHymnGroup().getDayColor());
+            }
+
+            playButton = new PlayButton(hymn, this,
+                    (ImageButton) rootView.findViewById(getRid("playButton")));
+            sheetMusicButton = new SheetMusicButton(hymn, this,
+                    (ImageButton) rootView.findViewById(getRid("sheetMusicButton")));
+            faveButton = new FaveButton(hymn, this,
+                    (ImageButton) rootView.findViewById(getRid("faveButton")));
+            copyButton = new CopyButton(hymn, this,
+                    (ImageButton) rootView.findViewById(getRid("copyButton")));
+            youtubeButton = new YoutubeButton(hymn, this,
+                    (ImageButton) rootView.findViewById(getRid("youtubePianoButton")));
+            similarTuneButton = new SimilarTuneButton(hymn, this,
+                    (ImageButton) rootView.findViewById(getRid("similarTuneButton")));
+            setUpWebview(rootView);
+        }
+
     }
 
     private int getRid(String lyricHeader) {
@@ -159,7 +170,8 @@ public class ContentArea extends Fragment {
         for (OnLyricVisibleListener listener : onLyricVisibleLIsteners) {
             listener.onLyricVisible(hymn.getHymnId());
         }
-        if (hymn != null) log();
+        if (hymn != null)
+            log();
     }
 
     @Override
@@ -185,11 +197,16 @@ public class ContentArea extends Fragment {
         return hymn.getRelatedHymnOf(selectedHymnGroup);
     }
 
+    public static String selectedHymId = HymnGroup.DEFAULT_HYMN_NUMBER;
+
     public void log() {
         // No need to log default hymn number since it's the starting point anyway
         // NOTE: possible null pointer here!
-        if (hymnStack != null && hymnStack.contains(hymn.getHymnId()) && !getHymnId().equals(HymnGroup.DEFAULT_HYMN_NUMBER))
+
+        if (hymnStack != null && hymnStack.contains(hymn.getHymnId()) && !getHymnId().equals(HymnGroup.DEFAULT_HYMN_NUMBER)) {
+            String id = hymn.getHymnId();
             historyLogBook.log(hymn);
+        }
     }
 
     @Override
@@ -209,7 +226,7 @@ public class ContentArea extends Fragment {
     void setUpWebview(ViewGroup rootView) {
         SharedPreferences sharedPreferences = androidx.preference.PreferenceManager.getDefaultSharedPreferences(context);
         boolean showEmbed = sharedPreferences.getBoolean("embedYoutube", true);
-        if (showEmbed && NetworkCache.isNetworkAvailable(rootView.getContext())){
+        if (showEmbed && NetworkCache.isNetworkAvailable(rootView.getContext())) {
             View youtubeWebViewCard = (View) rootView.findViewById(getRid("youtube_web_view_card")); //
             WebView youtubeWebView = (WebView) rootView.findViewById(getRid("youtube_web_view")); //todo find or bind web view
             JsonFetch jsonFetch = new JsonFetch();
