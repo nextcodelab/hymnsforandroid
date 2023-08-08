@@ -7,8 +7,6 @@
 # Download for Windows
 [Download HYMN for Windows](https://github.com/nextcodelab/hymnsforandroid/raw/master/windows/hymnforwindows/Installers/HymnIntaller.MSI_1.0.9.0_Test/HymnIntaller.MSI_1.0.9.0_x86.msixbundle)
 
-[Download Certificate](https://github.com/nextcodelab/hymnsforandroid/raw/master/windows/hymnforwindows/Installers/HymnIntaller.MSI_1.0.9.0_Test/HymnIntaller.MSI_1.0.9.0_x86.cer)
-
 
 ![Screen](https://github.com/nextcodelab/hymnsforandroid/blob/master/app/images/screen1.jpg?raw=true)
 ![Screen](https://github.com/nextcodelab/hymnsforandroid/blob/master/app/images/screen3.jpg?raw=true)
