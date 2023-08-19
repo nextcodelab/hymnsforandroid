@@ -28,5 +28,6 @@
 
 ## Reading the Bible
 Encourage everyone to read the Bible in order to preserve the truth. While some churches have started using morning pamphlets, booklets, and studies written by ministry leaders, it's important to remember that these materials can serve as guides but should not completely replace the Bible in our daily devotion. Substituting these resources for the Bible can potentially obscure the truth. Our focus should be on reading the Bible with the guidance of the Holy Spirit rather than relying solely on the writings of popular authors. While it's certainly beneficial to read books and various writings, I encourage you to view them as supplements to the Bible, not as replacements for all. More reading on pure Bible than booklets. (*1 John 2:27*).
+*Blessed is he that readeth, and they that hear the words of this prophecy, and keep those things which are written therein: for the time is at hand.* **(Revelation 1:3)**
 
 
