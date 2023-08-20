@@ -29,8 +29,6 @@
 ## Reading the Bible
 Encourage everyone to read the Bible in order to preserve the truth. While some churches have started using morning pamphlets, booklets, and studies written by ministry leaders, it's important to remember that these materials can serve as guides but should not completely replace the Bible in our daily devotion. Substituting these resources with the Bible and using a somewhat coercive approach, to compel to almost all members in any fellowships to read them could potentially obscure the truth. Our focus should be on reading the Bible with the guidance of the Holy Spirit rather than relying solely on the writings of popular authors. While it's certainly beneficial to read books and various writings, I encourage believers to view them as supplements to the Bible, not as replacements for almost all the times. More reading on pure Bible than booklets. (*1 John 2:27*).
 
-There are churches now that claim to be the only true Christians, degrading other denominations. They control their material, making it almost exclusive to them, and they compare their own Bible translation as superior to others. They also refuse to recognize other denominations as part of the body of Christ, insisting that they alone are right. Furthermore, they believe that only their leaders are guided by the Holy Spirit, and they heavily emphasize the teachings of these leaders.
-
 *Blessed is he that readeth, and they that hear the words of this prophecy, and keep those things which are written therein: for the time is at hand.* **(Revelation 1:3)**
 
 
