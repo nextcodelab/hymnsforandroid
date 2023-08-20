@@ -38,3 +38,5 @@ Encourage everyone to read the Bible in order to preserve the truth. While some 
 
 **3.** [Stories3](https://www.reddit.com/r/Christianity/comments/3brtbp/experience_with_a_christian_cult/)
 
+**4.** [Stories3](https://www.reddit.com/r/Christian/comments/156654m/any_former_members_of_the_lords_recovery_aka_the/)
+
