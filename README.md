@@ -40,3 +40,5 @@ Encourage everyone to read the Bible in order to preserve the truth. While some 
 
 **4.** [Stories3](https://www.reddit.com/r/Christian/comments/156654m/any_former_members_of_the_lords_recovery_aka_the/)
 
+**5.** [Stories4](https://www.reddit.com/r/Christianity/comments/ufme71/witness_lee_local_church/)
+
