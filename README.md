@@ -31,6 +31,4 @@ Encourage everyone to read the Bible in order to preserve the truth. While some 
 
 *Blessed is he that readeth, and they that hear the words of this prophecy, and keep those things which are written therein: for the time is at hand.* **(Revelation 1:3)**
 
-https://www.reddit.com/r/TrueChristian/comments/bjwy6b/thoughts_on_the_local_church_the_lords_recovery/?rdt=37001
-
 
