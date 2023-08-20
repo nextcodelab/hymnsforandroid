@@ -32,15 +32,15 @@ Encourage everyone to read the Bible in order to preserve the truth. While some 
 *Blessed is he that readeth, and they that hear the words of this prophecy, and keep those things which are written therein: for the time is at hand.* **(Revelation 1:3)**
 
 ## Read Stories
-**1.** [Stories1](https://www.reddit.com/r/TrueChristian/comments/bjwy6b/thoughts_on_the_local_church_the_lords_recovery/?rdt=37001)
+**1.** [Reddit1](https://www.reddit.com/r/TrueChristian/comments/bjwy6b/thoughts_on_the_local_church_the_lords_recovery/?rdt=37001)
 
-**2.** [Stories2](https://www.reddit.com/r/cults/comments/oag6ca/info_about_the_local_churches_movement_or_the/)
+**2.** [Reddit2](https://www.reddit.com/r/cults/comments/oag6ca/info_about_the_local_churches_movement_or_the/)
 
-**3.** [Stories3](https://www.reddit.com/r/Christianity/comments/3brtbp/experience_with_a_christian_cult/)
+**3.** [Reddit3](https://www.reddit.com/r/Christianity/comments/3brtbp/experience_with_a_christian_cult/)
 
-**4.** [Stories3](https://www.reddit.com/r/Christian/comments/156654m/any_former_members_of_the_lords_recovery_aka_the/)
+**4.** [Reddit4](https://www.reddit.com/r/Christian/comments/156654m/any_former_members_of_the_lords_recovery_aka_the/)
 
-**5.** [Stories4](https://www.reddit.com/r/Christianity/comments/ufme71/witness_lee_local_church/)
+**5.** [Reddit5](https://www.reddit.com/r/Christianity/comments/ufme71/witness_lee_local_church/)
 
 
 
