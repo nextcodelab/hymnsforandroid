@@ -42,3 +42,6 @@ Encourage everyone to read the Bible in order to preserve the truth. While some 
 
 **5.** [Stories4](https://www.reddit.com/r/Christianity/comments/ufme71/witness_lee_local_church/)
 
+[Christianitytoday](https://www.christianitytoday.com/ct/2003/february/13.24.html)
+
+
