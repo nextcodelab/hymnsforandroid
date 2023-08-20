@@ -34,5 +34,7 @@ Encourage everyone to read the Bible in order to preserve the truth. While some 
 ## Read Stories
 **1.** [Stories1](https://www.reddit.com/r/TrueChristian/comments/bjwy6b/thoughts_on_the_local_church_the_lords_recovery/?rdt=37001)
 
-**2.** [Stories2](https://www.reddit.com/r/Christianity/comments/3brtbp/experience_with_a_christian_cult/)
+**2.** [Stories2](https://www.reddit.com/r/cults/comments/oag6ca/info_about_the_local_churches_movement_or_the/)
+
+**3.** [Stories3](https://www.reddit.com/r/Christianity/comments/3brtbp/experience_with_a_christian_cult/)
 
